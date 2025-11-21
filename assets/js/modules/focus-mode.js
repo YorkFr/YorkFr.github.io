@@ -2,6 +2,7 @@
 
 export function initFocusMode() {
     const toggleBtn = document.getElementById('focus-mode-toggle');
+    const toggleLabel = toggleBtn ? toggleBtn.querySelector('.focus-label') : null;
     const exitBtn = document.getElementById('exit-focus');
     const scrollTopBtn = document.getElementById('scroll-to-top');
     const body = document.body;
@@ -25,8 +26,10 @@ export function initFocusMode() {
         if (icon) {
             if (body.classList.contains('focus-mode')) {
                 icon.className = 'ph ph-book-open-text';
+                if (toggleLabel) toggleLabel.textContent = 'Reader on';
             } else {
                 icon.className = 'ph ph-book-open';
+                if (toggleLabel) toggleLabel.textContent = 'Reader';
             }
         }
     };
@@ -42,6 +45,7 @@ export function initFocusMode() {
             body.classList.remove('focus-mode');
             const icon = toggleBtn?.querySelector('i');
             if (icon) icon.className = 'ph ph-book-open';
+            if (toggleLabel) toggleLabel.textContent = 'Reader';
         });
     }
 
@@ -119,4 +123,7 @@ export function initFocusMode() {
     if (postContent) {
         postContent.classList.add('font-medium', 'width-medium');
     }
+
+    // Mark default width button as active
+    document.querySelector('[data-action="width-medium"]')?.classList.add('active');
 }

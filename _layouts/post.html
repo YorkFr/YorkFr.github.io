@@ -5,14 +5,35 @@ layout: default
 <article class="post-detail-clean">
     <header class="post-header-clean">
         <div class="post-meta-clean">
-            {{ page.date | date: "%B %d, %Y" }} · {{ page.categories | join: ', ' }}
-            <!-- Focus Mode Toggle -->
-            <button id="focus-mode-toggle" class="focus-toggle" title="Toggle Focus Mode">
-                <i class="ph ph-arrows-out-simple"></i>
+            {{ page.date | date: "%B %d, %Y" }} &middot; {{ page.categories | join: ', ' }}
+            <!-- Reader Mode Toggle -->
+            <button id="focus-mode-toggle" class="focus-toggle" title="Toggle reader mode">
+                <i class="ph ph-book-open"></i>
+                <span class="focus-label">Reader</span>
             </button>
         </div>
         <h1 class="post-title-clean">{{ page.title }}</h1>
     </header>
+
+    <!-- Reader Controls -->
+    <section class="reader-controls" aria-label="Reader settings">
+        <div class="control-group">
+            <label><i class="ph ph-text-aa"></i>Font size</label>
+            <div class="control-buttons">
+                <button class="control-btn" data-action="font-decrease">A-</button>
+                <button class="control-btn active" data-action="font-reset">Default</button>
+                <button class="control-btn" data-action="font-increase">A+</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label><i class="ph ph-columns"></i>Line width</label>
+            <div class="control-buttons">
+                <button class="control-btn" data-action="width-narrow">Narrow</button>
+                <button class="control-btn active" data-action="width-medium">Comfort</button>
+                <button class="control-btn" data-action="width-wide">Wide</button>
+            </div>
+        </div>
+    </section>
 
     <div class="post-content-clean">
         {{ content }}
@@ -22,3 +43,13 @@ layout: default
         <!-- Optional: Share buttons or "Back to Home" -->
     </footer>
 </article>
+
+<!-- Floating controls shown only in focus mode -->
+<div class="focus-fab-container">
+    <button id="scroll-to-top" class="focus-fab" title="Back to top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
+    <button id="exit-focus" class="focus-fab" title="Exit reader">
+        <i class="ph ph-x"></i>
+    </button>
+</div>
