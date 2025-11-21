@@ -22,7 +22,28 @@ img { border-radius: 12px; max-width: 100%; height: auto; }
 .post-excerpt { font-size: 1.05rem; line-height: 1.7; color: #424245; margin-bottom: 15px; }
 .read-more { font-size: 0.9rem; font-weight: 600; color: #0071e3; text-decoration: none; }
 
-/* --- 代码块 (Code Blocks) --- */
-pre { background-color: #f6f8fa; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; border: 1px solid #e1e4e8; line-height: 1.5; }
-p code, li code { background-color: rgba(27, 31, 35, 0.05); padding: 0.2em 0.4em; border-radius: 4px; font-family: monospace; font-size: 0.85em; color: #d63384; }
-pre code { background-color: transparent; padding: 0; color: #24292e; font-size: 0.9em; font-family: monospace; display: block; }
+/* --- 代码块 (Code Blocks) 样式加固 --- */
+pre { 
+    background-color: #f6f8fa; 
+    border-radius: 8px; 
+    padding: 16px; 
+    overflow-x: auto; 
+    margin: 20px 0; 
+    border: 1px solid #e1e4e8; /* 加上边框 */
+    line-height: 1.5; 
+}
+/* 确保代码文字的样式 */
+pre code { 
+    font-family: "SF Mono", "Menlo", "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #24292e; 
+}
+
+/* 行内代码 */
+p code, li code {
+    background-color: rgba(27, 31, 35, 0.05); 
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: #d63384; 
+}
