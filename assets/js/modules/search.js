@@ -62,7 +62,7 @@ export function initSearch() {
         results.innerHTML = items.map((item, index) => `
             <div class="cmd-result-item ${index === selectedIndex ? 'selected' : ''}" data-index="${index}">
                 <div class="cmd-result-title">${item.title}</div>
-                <div class="cmd-result-meta">${item.date} · ${item.categories.join(', ')}</div>
+                <div class="cmd-result-meta">${item.date} | ${item.categories.join(', ')}</div>
             </div>
         `).join('');
 

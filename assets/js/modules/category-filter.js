@@ -2,8 +2,10 @@
 
 export function initCategoryFilter() {
     const categoryTags = document.querySelectorAll('.category-tag');
-    const postCards = document.querySelectorAll('.stream-card[data-category]');
+    const postCards = document.querySelectorAll('.stream-card[data-categories]');
     let activeCategory = null;
+
+    if (!categoryTags.length || !postCards.length) return;
 
     categoryTags.forEach(tag => {
         tag.addEventListener('click', (e) => {
@@ -26,13 +28,10 @@ export function initCategoryFilter() {
                 categoryTags.forEach(t => t.classList.remove('active'));
                 tag.classList.add('active');
 
-                // Filter posts
+                // Filter posts - cards can contain multiple comma-separated categories
                 postCards.forEach(card => {
-                    if (card.dataset.category === category) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    const categories = card.dataset.categories.split(',').map(c => c.trim());
+                    card.style.display = categories.includes(category) ? '' : 'none';
                 });
             }
         });
