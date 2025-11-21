@@ -27,27 +27,18 @@ layout: default
 <!-- Floating controls shown only in focus mode -->
 <div class="focus-fab-container">
     <section class="reader-controls" aria-label="Reader settings">
+        <div class="reader-controls-header">
+            <span>Reader settings</span>
+            <button id="reader-close" type="button" aria-label="Close reader panel">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
         <div class="font-slider">
             <div class="font-slider-header">
                 <span><i class="ph ph-text-aa"></i> Font size</span>
                 <span id="font-size-label">Comfort</span>
             </div>
             <input type="range" id="font-slider" min="0" max="3" step="1" value="1" aria-label="Font size slider">
-        </div>
-        <div class="line-slider">
-            <div class="line-slider-header">
-                <span><i class="ph ph-text-h-five"></i> Line spacing</span>
-                <span id="line-height-label">Comfort</span>
-            </div>
-            <input type="range" id="line-slider" min="0" max="2" step="1" value="1" aria-label="Line spacing slider">
-        </div>
-        <div class="width-controls">
-            <span class="width-label"><i class="ph ph-columns"></i> Line width</span>
-            <div class="width-buttons">
-                <button class="width-btn" data-width="narrow" type="button">Narrow</button>
-                <button class="width-btn active" data-width="medium" type="button">Comfort</button>
-                <button class="width-btn" data-width="wide" type="button">Wide</button>
-            </div>
         </div>
     </section>
     <button id="reader-controls-toggle" class="focus-fab" title="Reader settings" type="button">
