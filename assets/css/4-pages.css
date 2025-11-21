@@ -59,6 +59,25 @@
 .post-content-clean ol {
     margin-bottom: 1.5em;
     padding-left: 1.5em;
+}
+
+.post-content-clean li {
+    margin-bottom: 0.5em;
+}
+
+.post-content-clean code {
+    background-color: var(--bg-panel-hover);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--accent-primary);
+}
+
+.post-footer-clean {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-subtle);
     display: flex;
     justify-content: center;
 }
@@ -191,25 +210,4 @@
     padding: 2px 6px;
     border-radius: 4px;
     opacity: 0.5;
-
-    /* Focus Toggle Button */
-    .focus-toggle {
-        background: transparent;
-        border: none;
-        color: var(--text-muted);
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 50%;
-        transition: all 0.2s;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 12px;
-        vertical-align: middle;
-    }
-
-    .focus-toggle:hover {
-        background-color: var(--bg-panel-hover);
-        color: var(--accent-primary);
-        transform: scale(1.1);
-    }
+}

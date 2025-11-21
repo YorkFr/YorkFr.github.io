@@ -1,9 +1,24 @@
 ---
 layout: default
-{{ content }}
-</div>
+---
 
-<footer class="post-footer-clean">
-    <!-- Optional: Share buttons or "Back to Home" -->
-</footer>
+<article class="post-detail-clean">
+    <header class="post-header-clean">
+        <div class="post-meta-clean">
+            {{ page.date | date: "%B %d, %Y" }} · {{ page.categories | join: ', ' }}
+            <!-- Focus Mode Toggle -->
+            <button id="focus-mode-toggle" class="focus-toggle" title="Toggle Focus Mode">
+                <i class="ph ph-arrows-out-simple"></i>
+            </button>
+        </div>
+        <h1 class="post-title-clean">{{ page.title }}</h1>
+    </header>
+
+    <div class="post-content-clean">
+        {{ content }}
+    </div>
+
+    <footer class="post-footer-clean">
+        <!-- Optional: Share buttons or "Back to Home" -->
+    </footer>
 </article>

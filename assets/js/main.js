@@ -126,23 +126,13 @@ function initCodeCopy() {
     const codeBlocks = document.querySelectorAll('pre');
 
     codeBlocks.forEach(block => {
-        // Create wrapper
-        const wrapper = document.createElement('div');
-        wrapper.className = 'code-wrapper';
-
-        // Insert wrapper before block
-        block.parentNode.insertBefore(wrapper, block);
-
-        // Move block into wrapper
-        wrapper.appendChild(block);
-
         // Create button
         const btn = document.createElement('button');
         btn.className = 'copy-btn';
         btn.textContent = 'Copy';
 
-        // Add to wrapper
-        wrapper.appendChild(btn);
+        // Add to block
+        block.appendChild(btn);
 
         // Click event
         btn.addEventListener('click', () => {
