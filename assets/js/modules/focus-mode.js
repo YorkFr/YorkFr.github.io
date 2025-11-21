@@ -7,15 +7,20 @@ export function initFocusMode() {
     const scrollTopBtn = document.getElementById('scroll-to-top');
     const body = document.body;
     const postContent = document.querySelector('.post-content-clean');
-    const controlBtns = document.querySelectorAll('.control-btn');
+    const articleShell = document.querySelector('.post-detail-clean');
+    const fontSlider = document.getElementById('font-slider');
+    const fontSizeLabel = document.getElementById('font-size-label');
+    const widthButtons = document.querySelectorAll('.width-btn');
+    const scrollContainer = document.querySelector('.main-stream');
 
     // Font size state
-    let fontSizeLevel = 1; // 0: small, 1: medium (default), 2: large, 3: xlarge
     const fontSizes = ['font-small', 'font-medium', 'font-large', 'font-xlarge'];
+    const fontLabels = ['Compact', 'Comfort', 'Large', 'Focus'];
+    let fontSizeLevel = 1; // default medium
 
     // Line width state
-    let lineWidth = 'medium'; // narrow, medium (default), wide
     const lineWidths = ['width-narrow', 'width-medium', 'width-wide'];
+    let lineWidth = 'medium';
 
     // Toggle focus mode
     const toggleFocusMode = () => {
@@ -52,78 +57,68 @@ export function initFocusMode() {
     // Scroll to top
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const target = scrollContainer || window;
+            target.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Show/hide based on scroll position
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300 && body.classList.contains('focus-mode')) {
+        const watchScroll = () => {
+            const position = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+            if (position > 300 && body.classList.contains('focus-mode')) {
                 scrollTopBtn.style.opacity = '1';
             } else {
                 scrollTopBtn.style.opacity = '0.5';
             }
+        };
+
+        (scrollContainer || window).addEventListener('scroll', watchScroll);
+    }
+
+    // Font slider
+    const applyFontLevel = (level) => {
+        if (!postContent) return;
+        postContent.classList.remove(...fontSizes);
+        postContent.classList.add(fontSizes[level]);
+        fontSizeLevel = level;
+        if (fontSizeLabel) {
+            fontSizeLabel.textContent = fontLabels[level] || 'Comfort';
+        }
+    };
+
+    if (fontSlider) {
+        fontSlider.addEventListener('input', (e) => {
+            const level = parseInt(e.target.value, 10);
+            applyFontLevel(Math.max(0, Math.min(level, fontSizes.length - 1)));
         });
     }
 
-    // Reader controls
-    controlBtns.forEach(btn => {
+    // Width buttons
+    widthButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            const action = btn.dataset.action;
+            const targetWidth = btn.dataset.width;
+            if (!targetWidth || !articleShell) return;
 
-            if (!postContent) return;
+            articleShell.classList.remove(...lineWidths);
+            articleShell.classList.add(`width-${targetWidth}`);
+            lineWidth = targetWidth;
 
-            // Font size controls
-            if (action === 'font-decrease' && fontSizeLevel > 0) {
-                postContent.classList.remove(fontSizes[fontSizeLevel]);
-                fontSizeLevel--;
-                postContent.classList.add(fontSizes[fontSizeLevel]);
-                updateActiveButton('font', fontSizeLevel);
-            } else if (action === 'font-reset') {
-                postContent.classList.remove(...fontSizes);
-                fontSizeLevel = 1;
-                postContent.classList.add('font-medium');
-                updateActiveButton('font', 1);
-            } else if (action === 'font-increase' && fontSizeLevel < 3) {
-                postContent.classList.remove(fontSizes[fontSizeLevel]);
-                fontSizeLevel++;
-                postContent.classList.add(fontSizes[fontSizeLevel]);
-                updateActiveButton('font', fontSizeLevel);
-            }
-
-            // Line width controls
-            else if (action.startsWith('width-')) {
-                const newWidth = action.replace('width-', '');
-                postContent.classList.remove(...lineWidths);
-                postContent.classList.add(`width-${newWidth}`);
-                lineWidth = newWidth;
-
-                // Update active state
-                document.querySelectorAll('[data-action^="width-"]').forEach(b => {
-                    b.classList.remove('active');
-                });
-                btn.classList.add('active');
-            }
+            widthButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         });
     });
 
-    // Helper function to update active button state
-    function updateActiveButton(type, level) {
-        if (type === 'font') {
-            document.querySelectorAll('[data-action^="font-"]').forEach(b => {
-                b.classList.remove('active');
-            });
-            // Highlight the current level button
-            if (level === 1) {
-                document.querySelector('[data-action="font-reset"]')?.classList.add('active');
-            }
-        }
-    }
-
     // Initialize default classes
     if (postContent) {
-        postContent.classList.add('font-medium', 'width-medium');
+        postContent.classList.add('font-medium');
+    }
+    if (articleShell) {
+        articleShell.classList.add('width-medium');
     }
 
-    // Mark default width button as active
-    document.querySelector('[data-action="width-medium"]')?.classList.add('active');
+    applyFontLevel(fontSizeLevel);
+    widthButtons.forEach(btn => {
+        if (btn.dataset.width === lineWidth) {
+            btn.classList.add('active');
+        }
+    });
 }
