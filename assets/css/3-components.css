@@ -22,13 +22,55 @@ img { border-radius: 12px; max-width: 100%; height: auto; }
 .hero-title { font-size: 2.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
 .hero-desc { font-size: 1.1rem; color: #86868b; }
 
-/* --- 文章列表卡片 --- */
-.post-item { margin-bottom: 50px; }
-.post-title-link { display: block; font-size: 1.6rem; font-weight: 600; color: #1d1d1f; text-decoration: none; line-height: 1.3; margin-bottom: 8px; }
-.post-title-link:hover { color: #0071e3; text-decoration: none; }
-.post-meta { font-size: 0.85rem; color: #86868b; margin-bottom: 12px; font-family: "SF Mono", monospace; }
-.post-excerpt { font-size: 1.05rem; line-height: 1.7; color: #424245; margin-bottom: 15px; }
-.read-more { font-size: 0.9rem; font-weight: 600; color: #0071e3; text-decoration: none; }
+/* --- 文章列表卡片 (优化间距和线条) --- */
+.post-item {
+    margin-bottom: 0px; /* 移除底部大间距 */
+    padding: 25px 0;    /* 使用内边距控制间距 */
+    border-bottom: 1px solid #f0f0f0; /* 柔和的底部分隔线 */
+    transition: background-color 0.2s ease;
+}
+
+.post-item:first-child { 
+    padding-top: 0; /* 第一篇文章不需要顶部留白 */
+}
+
+.post-item:hover {
+    background-color: var(--card-hover, #fcfcfd); /* 鼠标放上去有轻微底色变化 */
+}
+
+/* 标题和日期层次优化 */
+.post-title-link {
+    display: block;
+    font-size: 1.45rem; /* 略微收缩，更易读 */
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.post-meta {
+    font-size: 0.85rem; /* 日期更小，更像元数据 */
+    color: var(--text-gray);
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.post-excerpt {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+/* 阅读更多链接 */
+.read-more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--apple-blue);
+    text-decoration: none;
+}
 
 /* --- 代码块 (Code Blocks) 样式加固 --- */
 pre { 
