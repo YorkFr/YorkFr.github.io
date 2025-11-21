@@ -89,18 +89,24 @@ function initLanguage() {
     }
 }
 
+
 /* --- 4. Navigation Active State --- */
 function initNavigation() {
     const path = window.location.pathname;
-    const links = document.querySelectorAll('.nav-icon');
+    const allNavLinks = document.querySelectorAll('.nav-logo, .nav-icon');
 
-    links.forEach(link => {
-        // Simple match, can be improved for sub-paths
-        if (link.getAttribute('href') === path) {
+    allNavLinks.forEach(link => {
+        // Remove active class from all links first
+        link.classList.remove('active');
+
+        // Add active class to matching link
+        const href = link.getAttribute('href');
+        if (href === path || (path === '/' && href === '/')) {
             link.classList.add('active');
         }
     });
 }
+
 
 /* --- 5. Full Screen Mode (Focus Mode) --- */
 function initFocusMode() {
