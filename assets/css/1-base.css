@@ -21,6 +21,7 @@ body {
     color: var(--text-main);
     line-height: 1.8;
     font-size: 18px;
+    overflow-x: hidden;
 }
 
 a { color: var(--apple-blue); text-decoration: none; }
