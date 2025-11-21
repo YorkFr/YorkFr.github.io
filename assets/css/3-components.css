@@ -55,3 +55,17 @@ p code, li code {
     font-size: 0.85em;
     color: #d63384; 
 }
+
+table {
+    display: block; /* 关键：让 table 成为一个可滚动的容器 */
+    width: 100%;    /* 确保表格不会因太宽而忽略容器 */
+    overflow-x: auto; /* 让表格在自己的区域内滚动 */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 增加一点美观 */
+}
+table th, table td {
+    padding: 12px;
+    border: 1px solid #eee;
+    min-width: 150px; /* 防止表格单元格在滚动时挤压得太小 */
+}
