@@ -1,59 +1,114 @@
 /* assets/css/2-layout.css */
 
-/* 核心双栏布局 */
+/* Core Layout */
 .app-layout {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     min-height: 100vh;
 }
 
-/* 左侧边栏 */
+/* Sidebar - Glassmorphism */
 .sidebar {
     background-color: var(--sidebar-bg);
-    padding: 60px 40px;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 60px 30px;
+    border-right: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    z-index: 100;
 }
 
-.brand { margin-bottom: 40px; }
-.brand h1 a { font-size: 1.5rem; font-weight: 700; color: #000; text-decoration: none; letter-spacing: -0.02em; }
-.brand p { margin-top: 10px; font-size: 0.9rem; color: var(--text-gray); line-height: 1.4; }
+.brand {
+    margin-bottom: 50px;
+}
 
-.nav-menu { display: flex; flex-direction: column; gap: 15px; }
-.nav-item { font-size: 0.95rem; font-weight: 500; color: #424245; text-decoration: none; padding: 8px 12px; margin-left: -12px; border-radius: 8px; transition: all 0.2s ease; }
-.nav-item:hover { background-color: rgba(0,0,0,0.05); color: #000; }
-.sidebar-footer { margin-top: auto; font-size: 0.75rem; color: #999; }
+.brand h1 a {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-/* 右侧内容区 */
+.brand p {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item:hover {
+    background-color: var(--surface-hover);
+    color: var(--text-main);
+    transform: translateX(4px);
+}
+
+.nav-item.active {
+    background-color: var(--surface-hover);
+    color: var(--accent-primary);
+    box-shadow: inset 2px 0 0 var(--accent-primary);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    opacity: 0.6;
+}
+
+/* Content Area */
 .content-area {
-    padding: 80px 60px; /* 减少左右边距，用固定像素值更可控 */
-    max-width: 1100px;  /* 增大内容最大宽度，让它占更大的空间 */
-    margin: 0 auto;     /* 依然保持居中，但限制在 1100px 宽度内 */
+    padding: 80px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-
-
-/* --- 移动端适配 (当屏幕小于 768px 时生效) --- */
+/* Mobile Adaptation */
 @media (max-width: 768px) {
-    /* 1. 结构：将双栏变为单栏堆叠 */
-    .app-layout { grid-template-columns: 1fr; }
-    
-    /* 2. 侧边栏：取消固定，正常显示 */
-    .sidebar { 
-        height: auto; 
-        position: relative; 
+    .app-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        height: auto;
+        position: relative;
         padding: 30px 20px;
         border-right: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border-color);
+        background-color: rgba(10, 10, 10, 0.95);
     }
-    
-    /* 👇 3. 核心修复：减小右侧内容区的边距 */
-    .content-area { 
-        /* 这里的 padding 会覆盖掉桌面端的 60px */
-        padding: 40px 20px; /* 顶部/底部 40px，左右侧 20px */
+
+    .content-area {
+        padding: 40px 20px;
+    }
+
+    .brand h1 a {
+        font-size: 1.5rem;
     }
 }

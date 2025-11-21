@@ -1,28 +1,56 @@
 ---
-layout: article-base
+layout: default
 ---
 
-<article style="margin-top: 20px;">
-    
-    <div style="margin-bottom: 20px; text-align: left;">
-        <a href="/" style="font-size: 0.9em; color: #555;">← 返回首页</a>
-    </div>
+<article class="post-detail">
 
-    <header style="text-align: center; margin-bottom: 40px;">
-        <h1 style="font-size: 2.4em; margin-bottom: 10px; color: #222;">{{ page.title }}</h1>
-        <div style="color: #888; font-size: 0.9em; font-family: 'Inter', sans-serif;">
-            <span class="date">{{ page.date | date: "%Y年%m月%d日" }}</span>
-            <span style="margin: 0 10px;">/</span>
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+            <span class="date">{{ page.date | date: "%Y-%m-%d" }}</span>
+            <span class="separator">/</span>
             <span class="author">{{ page.author | default: site.title }}</span>
         </div>
     </header>
 
-    <div class="post-content" style="line-height: 1.9; font-size: 1.1rem; color: #333;">
+    <div class="post-content">
         {{ content }}
     </div>
 
-    <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-        <a href="/" style="font-size: 0.9em; color: #555;">← 返回首页</a>
+    <div class="post-footer">
+        <a href="/" class="back-link">← Back to Home</a>
     </div>
 
 </article>
+
+<style>
+    /* Specific styles for post detail that might not be in components yet */
+    .post-header {
+        margin-bottom: 40px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 30px;
+    }
+
+    .post-title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .post-footer {
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .back-link {
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    .back-link:hover {
+        color: var(--accent-primary);
+    }
+</style>
