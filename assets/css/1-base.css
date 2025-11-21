@@ -1,5 +1,7 @@
 /* assets/css/1-base.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,27 +13,27 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     background-color: var(--bg-body);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     overflow-x: hidden;
 }
 
-/* Links */
 a {
     color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
     font-weight: 500;
 }
 
 a:hover {
     color: var(--primary-hover);
-    text-decoration: none;
 }
 
-/* Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -39,13 +41,12 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #dadce0;
-    border-radius: 5px;
-    border: 2px solid var(--bg-body);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #bdc1c6;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

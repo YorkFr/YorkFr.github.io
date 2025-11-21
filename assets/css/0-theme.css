@@ -1,54 +1,65 @@
 /* assets/css/0-theme.css */
 
 :root {
-    /* Color Palette - Google Material / Clean Tech Light Theme */
+    /* Advanced Premium Light Theme */
 
     /* Backgrounds */
-    --bg-body: #f8f9fa;
-    /* Light grey background common in Google apps */
-    --bg-surface: #ffffff;
-    /* Pure white for cards/sidebar */
-    --bg-surface-hover: #f1f3f4;
+    --bg-body: #f2f4f6;
+    /* Slightly cooler grey for a premium feel */
+    --bg-surface: rgba(255, 255, 255, 0.8);
+    /* Glassy white */
+    --bg-surface-solid: #ffffff;
+    --bg-gradient: radial-gradient(circle at 0% 0%, rgba(232, 240, 254, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(255, 235, 238, 0.5) 0%, transparent 50%);
 
     /* Text Colors */
-    --text-primary: #202124;
-    /* Google's almost-black */
-    --text-secondary: #5f6368;
-    /* Google's grey text */
-    --text-tertiary: #9aa0a6;
+    --text-primary: #1a1a1a;
+    /* Sharp black */
+    --text-secondary: #555555;
+    --text-tertiary: #888888;
 
     /* Brand / Accent Colors */
-    --primary-color: #1a73e8;
-    /* Google Blue */
-    --primary-hover: #174ea6;
-    --primary-light: #e8f0fe;
-    /* Very light blue for backgrounds/active states */
+    --primary-color: #0052cc;
+    /* Deep Tech Blue */
+    --primary-hover: #003d99;
+    --primary-light: rgba(0, 82, 204, 0.08);
 
-    /* Secondary Accents (Google-ish palette) */
-    --accent-red: #ea4335;
-    --accent-yellow: #fbbc04;
-    --accent-green: #34a853;
+    /* Accents for Bento Grid */
+    --accent-1: #e8f0fe;
+    /* Light Blue */
+    --accent-2: #fce8e6;
+    /* Light Red */
+    --accent-3: #e6f4ea;
+    /* Light Green */
+    --accent-4: #fef7e0;
+    /* Light Yellow */
 
-    /* Borders & Dividers */
-    --border-color: #dadce0;
-    --border-light: #e8eaed;
+    /* Borders */
+    --border-color: rgba(0, 0, 0, 0.06);
+    --border-light: rgba(0, 0, 0, 0.03);
 
-    /* Layout Dimensions */
-    --sidebar-width: 280px;
-    --max-content-width: 1000px;
+    /* Layout */
+    --sidebar-width: 260px;
+    --max-content-width: 1100px;
 
     /* Typography */
-    --font-sans: 'Google Sans', 'Inter', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
-    --font-mono: 'Roboto Mono', 'SF Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Outfit', 'Inter', sans-serif;
+    /* More character for headings */
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
 
     /* Shapes */
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-pill: 999px;
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 32px;
+    /* Super rounded for modern feel */
 
-    /* Shadows (Material Design inspired) */
-    --shadow-1: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    --shadow-2: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-    --shadow-none: none;
+    /* Shadows - Soft & layered */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 12px 32px rgba(0, 82, 204, 0.12);
+
+    /* Glassmorphism */
+    --glass-blur: blur(20px);
 }
