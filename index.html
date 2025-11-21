@@ -20,7 +20,7 @@ title: Dashboard
 
     <!-- Post Stream -->
     {% for post in site.posts %}
-    <article class="stream-card">
+    <article class="stream-card" data-category="{{ post.categories | first }}">
         <div class="card-meta">
             <i class="ph ph-calendar-blank"></i> {{ post.date | date: "%Y-%m-%d" }}
             <span style="color: var(--border-highlight)">|</span>
