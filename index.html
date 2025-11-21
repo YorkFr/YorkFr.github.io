@@ -4,13 +4,17 @@ title: Dashboard
 ---
 
 <div class="stream-feed">
-    
+
     <!-- Status / Welcome Card -->
     <div class="stream-card" style="border-left: 4px solid var(--accent-primary);">
-        <div class="card-title">Welcome back, System Online.</div>
+        <div class="card-title">
+            <span class="lang-en">Welcome back, System Online.</span>
+            <span class="lang-zh">欢迎回来，系统在线。</span>
+        </div>
         <p class="card-excerpt" style="margin-bottom: 0;">
-            All systems nominal. You are viewing the <strong>v3.0 Dashboard</strong> interface. 
-            Press <code style="color: var(--accent-primary)">Cmd+K</code> to access the command terminal.
+            <span class="lang-en">All systems nominal. You are viewing the <strong>v3.0 Dashboard</strong>
+                interface.</span>
+            <span class="lang-zh">所有系统正常。您正在查看 <strong>v3.0 仪表盘</strong> 界面。</span>
         </p>
     </div>
 
@@ -28,7 +32,8 @@ title: Dashboard
         </p>
         <div class="card-actions">
             <a href="{{ post.url }}" class="action-btn">
-                Read Protocol <i class="ph ph-arrow-right"></i>
+                <span class="lang-en">Read Protocol</span><span class="lang-zh">阅读协议</span> <i
+                    class="ph ph-arrow-right"></i>
             </a>
             <span class="action-btn">
                 <i class="ph ph-clock"></i> {{ post.content | number_of_words | divided_by: 180 | plus: 1 }} min read

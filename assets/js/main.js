@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    initWeather();
-    initCommandPalette();
+    initTime();
+    initLanguage();
     initNavigation();
 });
 
@@ -26,68 +26,64 @@ function initTheme() {
             const next = current === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
-
-            // Update icon
-            const icon = toggleBtn.querySelector('i');
-            if (icon) {
-                icon.className = next === 'dark' ? 'ph ph-sun' : 'ph ph-moon';
-            }
         });
     }
 }
 
-/* --- 2. Weather Widget --- */
-function initWeather() {
-    const tempEl = document.getElementById('weather-temp');
-    const descEl = document.getElementById('weather-desc');
+/* --- 2. Time Widget --- */
+function initTime() {
+    const timeDisplay = document.getElementById('local-time');
+    const dateDisplay = document.getElementById('local-date');
 
-    if (!tempEl || !descEl) return;
+    if (!timeDisplay) return;
 
-    // Mock data for now (API requires key)
-    // In a real app, fetch from OpenWeatherMap or similar
-    const weatherData = {
-        temp: 22,
-        condition: 'Partly Cloudy'
+    const updateTime = () => {
+        const now = new Date();
+
+        // Time: HH:MM:SS
+        timeDisplay.textContent = now.toLocaleTimeString('en-US', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
+        // Date: Mon, Nov 21
+        if (dateDisplay) {
+            dateDisplay.textContent = now.toLocaleDateString('en-US', {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
     };
 
-    tempEl.textContent = `${weatherData.temp}°`;
-    descEl.textContent = weatherData.condition;
+    updateTime();
+    setInterval(updateTime, 1000);
 }
 
-/* --- 3. Command Palette (Simplified) --- */
-function initCommandPalette() {
-    const palette = document.getElementById('cmd-palette');
-    const input = document.getElementById('cmd-input');
-    const trigger = document.getElementById('cmd-trigger');
+/* --- 3. Language Toggle --- */
+function initLanguage() {
+    const langBtn = document.getElementById('lang-toggle');
+    const html = document.documentElement;
+    const langLabel = langBtn ? langBtn.querySelector('span') : null;
 
-    if (!palette || !input) return;
+    // Default to English
+    if (!html.getAttribute('data-lang')) {
+        html.setAttribute('data-lang', 'en');
+    }
 
-    const openPalette = () => {
-        palette.style.display = 'flex';
-        input.focus();
-        input.value = '';
-    };
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-lang');
+            const next = current === 'en' ? 'zh' : 'en';
+            html.setAttribute('data-lang', next);
 
-    const closePalette = () => {
-        palette.style.display = 'none';
-    };
-
-    if (trigger) trigger.addEventListener('click', openPalette);
-
-    // Close on outside click
-    palette.addEventListener('click', (e) => {
-        if (e.target === palette) closePalette();
-    });
-
-    // Filter Logic
-    input.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const items = document.querySelectorAll('.cmd-item');
-        items.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(term) ? 'flex' : 'none';
+            if (langLabel) {
+                langLabel.textContent = next.toUpperCase();
+            }
         });
-    });
+    }
 }
 
 /* --- 4. Navigation Active State --- */
@@ -96,6 +92,7 @@ function initNavigation() {
     const links = document.querySelectorAll('.nav-icon');
 
     links.forEach(link => {
+        // Simple match, can be improved for sub-paths
         if (link.getAttribute('href') === path) {
             link.classList.add('active');
         }

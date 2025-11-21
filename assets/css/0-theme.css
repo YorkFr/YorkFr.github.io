@@ -67,3 +67,12 @@
     --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.2);
     --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
+
+/* Bilingual Support */
+[data-lang="en"] .lang-zh {
+    display: none !important;
+}
+
+[data-lang="zh"] .lang-en {
+    display: none !important;
+}

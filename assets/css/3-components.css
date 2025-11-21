@@ -81,36 +81,28 @@
     gap: 12px;
 }
 
-.weather-widget {
-    flex-direction: row;
-    align-items: center;
-    background: var(--gradient-gemini);
-    color: white;
+.time-widget {
+    align-items: flex-start;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
 }
 
-.weather-icon {
-    font-size: 32px;
-    margin-right: 12px;
-}
-
-.weather-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.weather-info .temp {
-    font-size: 1.5rem;
+.time-display {
+    font-size: 2.5rem;
     font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    background: var(--gradient-gemini);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.weather-info .desc {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-.weather-info .loc {
-    font-size: 0.75rem;
-    opacity: 0.8;
+.date-display {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
     margin-top: 4px;
 }
 
@@ -159,58 +151,8 @@
 }
 
 /* --- Command Palette --- */
+/* Removed as per request, but keeping styles just in case or for future use if needed, 
+   though the HTML is removed. Can be cleaned up later. */
 .cmd-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.8);
-    /* Light overlay */
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    padding-top: 15vh;
-}
-
-[data-theme="dark"] .cmd-overlay {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.cmd-modal {
-    width: 600px;
-    background: var(--bg-app);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-hover);
-    border: 1px solid var(--border-subtle);
-    overflow: hidden;
-}
-
-.cmd-input-wrapper {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-#cmd-input {
-    border: none;
-    background: transparent;
-    font-size: 1.2rem;
-    width: 100%;
-    outline: none;
-    color: var(--text-main);
-}
-
-.cmd-item {
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    color: var(--text-main);
-    text-decoration: none;
-    transition: background 0.1s;
-}
-
-.cmd-item:hover {
-    background-color: var(--bg-panel-hover);
+    display: none;
 }

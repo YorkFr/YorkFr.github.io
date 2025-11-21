@@ -29,7 +29,7 @@
         <!-- 1. Left Navigation Rail -->
         <nav class="nav-rail">
             <div class="nav-logo" onclick="window.location.href='/'">
-                <i class="ph-fill ph-asterisk-simple"></i>
+                <i class="ph-fill ph-asterisk-simple" style="font-size: 28px;"></i>
             </div>
 
             <div class="nav-links">
@@ -57,14 +57,8 @@
         <!-- 2. Main Content Stream -->
         <main class="main-stream">
             <header class="stream-header">
-                <h2 class="page-title">{{ page.title }}</h2>
-                <div class="header-actions">
-                    <button class="icon-btn" id="cmd-trigger" title="Search">
-                        <i class="ph ph-magnifying-glass"></i>
-                    </button>
-                </div>
+                <h1 class="page-title">{{ page.title }}</h1>
             </header>
-
             <div class="stream-content">
                 {{ content }}
             </div>
@@ -73,16 +67,10 @@
         <!-- 3. Right Widget Panel -->
         <aside class="widget-panel">
 
-            <!-- Weather Widget -->
-            <div class="widget-card weather-widget">
-                <div class="weather-icon">
-                    <i class="ph-fill ph-sun"></i>
-                </div>
-                <div class="weather-info">
-                    <span class="temp" id="weather-temp">24°</span>
-                    <span class="desc" id="weather-desc">Sunny</span>
-                    <span class="loc">San Francisco, CA</span>
-                </div>
+            <!-- Time Widget -->
+            <div class="widget-card time-widget">
+                <div class="time-display" id="local-time">--:--:--</div>
+                <div class="date-display" id="local-date">---, --- --</div>
             </div>
 
             <!-- Profile / Bio -->
@@ -95,37 +83,14 @@
                     </div>
                 </div>
                 <p class="profile-bio">
-                    Exploring the intersection of design, code, and artificial intelligence.
+                    <span class="lang-en">Exploring the intersection of design, code, and artificial
+                        intelligence.</span>
+                    <span class="lang-zh">探索设计、代码与人工智能的交汇点。</span>
                 </p>
             </div>
 
-            <!-- Google AI Style Link -->
-            <a href="https://ai.google" target="_blank" class="widget-card promo-card">
-                <div class="promo-content">
-                    <span>Inspired by</span>
-                    <strong>Google DeepMind</strong>
-                </div>
-                <i class="ph ph-arrow-up-right"></i>
-            </a>
-
         </aside>
 
-    </div>
-
-    <!-- Command Palette Modal -->
-    <div id="cmd-palette" class="cmd-overlay" style="display: none;">
-        <div class="cmd-modal">
-            <div class="cmd-input-wrapper">
-                <i class="ph ph-magnifying-glass"></i>
-                <input type="text" id="cmd-input" placeholder="Search..." autocomplete="off">
-            </div>
-            <div class="cmd-results">
-                <!-- Results populated by JS -->
-                <a href="/" class="cmd-item"><i class="ph ph-house"></i> Home</a>
-                <a href="/archive" class="cmd-item"><i class="ph ph-clock"></i> Archive</a>
-                <a href="/about" class="cmd-item"><i class="ph ph-user"></i> About</a>
-            </div>
-        </div>
     </div>
 
     <script src="/assets/js/main.js"></script>
