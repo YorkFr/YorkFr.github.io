@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/1-base.css">
+    <link rel="stylesheet" href="/assets/css/3-components.css"> 
+    </head>
+<body class="single-article-view">
+
+    <div style="height: 40px;"></div>
+
+    <main style="
+        max-width: 800px; 
+        margin: 0 auto; 
+        padding: 40px 20px 60px;
+    ">
+        {{ content }}
+    </main>
+    
+    <footer style="
+        text-align: center; 
+        padding: 40px; 
+        margin-top: 60px; 
+        border-top: 1px solid #eee;
+        color: #999; 
+        font-size: 0.8rem;
+    ">
+        &copy; {{ site.time | date: "%Y" }} {{ site.title }}
+    </footer>
+
+</body>
+</html>
