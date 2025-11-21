@@ -1,217 +1,234 @@
+/* assets/css/3-components.css */
+
+/* --- Surface Card (Generic) --- */
+.surface-card {
+    background-color: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    padding: 40px;
+}
+
+/* --- Stream Cards (Google Style) --- */
+.stream-card {
+    background-color: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 24px;
     transition: all 0.2s ease;
     border: 1px solid transparent;
     /* Cleaner look */
-    }
+}
 
-    .stream-card:hover {
-        background-color: var(--bg-app);
-        box-shadow: var(--shadow-soft);
-        transform: translateY(-2px);
-    }
+.stream-card:hover {
+    background-color: var(--bg-app);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
 
-    .card-meta {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-bottom: 16px;
-        display: flex;
-        gap: 12px;
-        font-weight: 500;
-    }
+.card-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    font-weight: 500;
+}
 
-    .card-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--text-main);
-        margin-bottom: 12px;
-        display: block;
-        line-height: 1.3;
-        letter-spacing: -0.02em;
-    }
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
 
-    .card-title:hover {
-        background: var(--gradient-gemini);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-    }
+.card-title:hover {
+    background: var(--gradient-gemini);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
 
-    .card-excerpt {
-        font-size: 1rem;
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin-bottom: 24px;
-    }
+.card-excerpt {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
 
-    .action-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        background-color: var(--bg-panel-hover);
-        border-radius: 20px;
-        /* Pill shape */
-        color: var(--text-main);
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.2s;
-        border: none;
-        cursor: pointer;
-    }
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--bg-panel-hover);
+    border-radius: 20px;
+    /* Pill shape */
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
 
-    .action-btn:hover {
-        background-color: var(--accent-primary);
-        color: white;
-    }
+.action-btn:hover {
+    background-color: var(--accent-primary);
+    color: white;
+}
 
-    /* --- Widgets --- */
-    .widget-card {
-        background-color: var(--bg-panel);
-        border-radius: var(--radius-lg);
-        padding: 24px;
-        margin-bottom: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
+/* --- Widgets --- */
+.widget-card {
+    background-color: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-    .time-widget {
-        align-items: flex-start;
-        background: var(--bg-panel);
-        border: 1px solid var(--border-subtle);
-        color: var(--text-main);
-    }
+.time-widget {
+    align-items: flex-start;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
+}
 
-    .time-display {
-        font-size: 2.5rem;
-        font-weight: 700;
-        font-family: var(--font-mono);
-        line-height: 1;
-        letter-spacing: -0.05em;
-        background: var(--gradient-gemini);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-    }
+.time-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    background: var(--gradient-gemini);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
 
-    .date-display {
-        font-size: 1rem;
-        color: var(--text-muted);
-        font-weight: 500;
-        margin-top: 4px;
-    }
+.date-display {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 4px;
+}
 
-    .profile-widget .avatar {
-        width: 48px;
-        height: 48px;
-        background-color: var(--accent-secondary);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 20px;
-    }
+.profile-widget .avatar {
+    width: 48px;
+    height: 48px;
+    background-color: var(--accent-secondary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
 
-    .profile-header {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-    }
+.profile-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
 
-    .profile-header h3 {
-        font-size: 1.1rem;
-        margin: 0;
-    }
+.profile-header h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
 
-    .profile-header p {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin: 0;
-    }
+.profile-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
 
-    .promo-card {
-        background-color: #e8f0fe;
-        /* Light blue tint */
-        color: var(--accent-primary);
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-    }
+.promo-card {
+    background-color: #e8f0fe;
+    /* Light blue tint */
+    color: var(--accent-primary);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
 
-    .promo-card:hover {
-        background-color: #d2e3fc;
-    }
+.promo-card:hover {
+    background-color: #d2e3fc;
+}
 
-    /* --- Code Blocks (Mac Style) --- */
-    pre {
-        background: #1e1e20;
-        /* Dark background */
-        color: #e3e3e3;
-        padding: 48px 24px 24px 24px;
-        /* Top padding for window controls */
-        border-radius: 12px;
-        overflow-x: auto;
-        position: relative;
-        margin-bottom: 24px;
-        box-shadow: var(--shadow-soft);
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
+/* --- Code Blocks (Mac Style) --- */
+pre {
+    background: #1e1e20;
+    /* Dark background */
+    color: #e3e3e3;
+    padding: 48px 24px 24px 24px;
+    /* Top padding for window controls */
+    border-radius: 12px;
+    overflow-x: auto;
+    position: relative;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
 
-    /* Window Controls (Red/Yellow/Green dots) */
-    pre::before {
-        content: '';
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #ff5f56;
-        /* Red */
-        box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
-        /* Yellow, Green */
-    }
+/* Window Controls (Red/Yellow/Green dots) */
+pre::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    /* Red */
+    box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+    /* Yellow, Green */
+}
 
-    code {
-        font-family: inherit;
-    }
+code {
+    font-family: inherit;
+}
 
-    /* Copy Button */
-    .copy-btn {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        color: #e3e3e3;
-        padding: 4px 12px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        opacity: 0;
-    }
+/* Copy Button */
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #e3e3e3;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+}
 
-    pre:hover .copy-btn {
-        opacity: 1;
-    }
+pre:hover .copy-btn {
+    opacity: 1;
+}
 
-    .copy-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
 
-    .copy-btn.copied {
-        background: #27c93f;
-        color: white;
-    }
+.copy-btn.copied {
+    background: #27c93f;
+    color: white;
+}
 
-    /* --- Command Palette --- */
-    .cmd-overlay {
-        display: none;
-    }
+/* --- Command Palette --- */
+.cmd-overlay {
+    display: none;
+}
