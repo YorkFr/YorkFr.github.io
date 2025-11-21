@@ -148,7 +148,15 @@
     padding-top: 40px;
     border-top: 1px solid var(--border-subtle);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.post-footer-clean .action-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 14px;
 }
 
 /* --- About Page (from about.html) --- */
