@@ -34,6 +34,13 @@ layout: default
             </div>
             <input type="range" id="font-slider" min="0" max="3" step="1" value="1" aria-label="Font size slider">
         </div>
+        <div class="line-slider">
+            <div class="line-slider-header">
+                <span><i class="ph ph-text-h-five"></i> Line spacing</span>
+                <span id="line-height-label">Comfort</span>
+            </div>
+            <input type="range" id="line-slider" min="0" max="2" step="1" value="1" aria-label="Line spacing slider">
+        </div>
         <div class="width-controls">
             <span class="width-label"><i class="ph ph-columns"></i> Line width</span>
             <div class="width-buttons">
@@ -43,6 +50,9 @@ layout: default
             </div>
         </div>
     </section>
+    <button id="reader-controls-toggle" class="focus-fab" title="Reader settings" type="button">
+        <i class="ph ph-sliders-horizontal"></i>
+    </button>
     <button id="scroll-to-top" class="focus-fab" title="Back to top" type="button">
         <i class="ph ph-arrow-up"></i>
     </button>
