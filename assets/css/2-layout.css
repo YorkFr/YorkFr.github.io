@@ -35,9 +35,25 @@
     margin: 0 auto;     /* 依然保持居中，但限制在 1100px 宽度内 */
 }
 
-/* 移动端适配 */
+
+
+/* --- 移动端适配 (当屏幕小于 768px 时生效) --- */
 @media (max-width: 768px) {
+    /* 1. 结构：将双栏变为单栏堆叠 */
     .app-layout { grid-template-columns: 1fr; }
-    .sidebar { height: auto; position: relative; padding: 30px 20px; border-right: none; border-bottom: 1px solid #eee; }
-    .content-area { padding: 40px 20px; }
+    
+    /* 2. 侧边栏：取消固定，正常显示 */
+    .sidebar { 
+        height: auto; 
+        position: relative; 
+        padding: 30px 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    /* 👇 3. 核心修复：减小右侧内容区的边距 */
+    .content-area { 
+        /* 这里的 padding 会覆盖掉桌面端的 60px */
+        padding: 40px 20px; /* 顶部/底部 40px，左右侧 20px */
+    }
 }
