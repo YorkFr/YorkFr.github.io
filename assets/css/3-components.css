@@ -40,6 +40,8 @@
     background: var(--gradient-gemini);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .card-excerpt {
@@ -97,6 +99,8 @@
     background: var(--gradient-gemini);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .date-display {
@@ -150,9 +154,72 @@
     background-color: #d2e3fc;
 }
 
+/* --- Code Blocks (Mac Style) --- */
+pre {
+    background: #1e1e20;
+    /* Dark background */
+    color: #e3e3e3;
+    padding: 48px 24px 24px 24px;
+    /* Top padding for window controls */
+    border-radius: 12px;
+    overflow-x: auto;
+    position: relative;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Window Controls (Red/Yellow/Green dots) */
+pre::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    /* Red */
+    box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+    /* Yellow, Green */
+}
+
+code {
+    font-family: inherit;
+}
+
+/* Copy Button */
+.copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #e3e3e3;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+pre:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.copy-btn.copied {
+    background: #27c93f;
+    color: white;
+}
+
 /* --- Command Palette --- */
-/* Removed as per request, but keeping styles just in case or for future use if needed, 
-   though the HTML is removed. Can be cleaned up later. */
 .cmd-overlay {
     display: none;
 }

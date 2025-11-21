@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTime();
     initLanguage();
     initNavigation();
+    initFocusMode();
+    initCodeCopy();
 });
 
 /* --- 1. Theme Toggle --- */
@@ -99,7 +101,61 @@ function initNavigation() {
     });
 }
 
-/* --- 5. Full Screen Mode --- */
+/* --- 5. Full Screen Mode (Focus Mode) --- */
+function initFocusMode() {
+    const toggleBtn = document.getElementById('focus-mode-toggle');
+    const body = document.body;
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('focus-mode');
+
+            // Toggle Icon/Text if needed
+            const icon = toggleBtn.querySelector('i');
+            if (body.classList.contains('focus-mode')) {
+                icon.classList.replace('ph-arrows-out-simple', 'ph-arrows-in-simple');
+            } else {
+                icon.classList.replace('ph-arrows-in-simple', 'ph-arrows-out-simple');
+            }
+        });
+    }
+}
+
+/* --- 6. Code Copy Button --- */
+function initCodeCopy() {
+    const codeBlocks = document.querySelectorAll('pre');
+
+    codeBlocks.forEach(block => {
+        // Create button
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'Copy';
+
+        // Add to block
+        block.appendChild(btn);
+
+        // Click event
+        btn.addEventListener('click', () => {
+            const code = block.querySelector('code');
+            const text = code ? code.innerText : block.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                btn.textContent = 'Error';
+            });
+        });
+    });
+}
+
+/* --- 7. Native Full Screen (Optional Helper) --- */
 window.toggleFullScreen = function () {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => {

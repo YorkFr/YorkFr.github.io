@@ -100,278 +100,111 @@
     position: sticky;
     top: 0;
     background-color: rgba(9, 9, 11, 0.8);
+    /* Semi-transparent match bg-app */
+    backdrop-filter: blur(12px);
+    z-index: 10;
+    border-bottom: 1px solid var(--border-subtle);
+}
 
-    /* 3. Right Widget Panel */
+.stream-content {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 3. Right Widget Panel */
+.widget-panel {
+    background-color: var(--bg-panel);
+    border-left: 1px solid var(--border-subtle);
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Mobile Adaptation */
+@media (max-width: 1024px) {
+    .app-container {
+        grid-template-columns: var(--nav-width) 1fr;
+        /* Hide widgets on tablet */
+    }
+
     .widget-panel {
-        background-color: var(--bg-panel);
-        border-left: 1px solid var(--border-subtle);
-        padding: 24px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+        display: none;
+        /* Or move to a drawer */
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 60px;
+        /* Bottom nav */
     }
 
-    /* Mobile Adaptation */
-    @media (max-width: 1024px) {
-        .app-container {
-            grid-template-columns: var(--nav-width) 1fr;
-            /* Hide widgets on tablet */
-        }
-
-        .widget-panel {
-            display: none;
-            /* Or move to a drawer */
-        }
+    .nav-rail {
+        grid-row: 2;
+        flex-direction: row;
+        width: 100%;
+        height: 60px;
+        border-right: none;
+        border-top: 1px solid var(--border-subtle);
+        padding: 0 20px;
+        justify-content: space-around;
     }
 
-    @media (max-width: 768px) {
-        .app-container {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 60px;
-            /* Bottom nav */
-        }
+    .nav-logo {
+        display: none;
+    }
 
-        .nav-rail {
-            grid-row: 2;
-            flex-direction: row;
-            width: 100%;
-            height: 60px;
-            border-right: none;
-            border-top: 1px solid var(--border-subtle);
-            padding: 0 20px;
-            justify-content: space-around;
-        }
+    /* Hide logo in bottom bar to save space */
+    .nav-links {
+        flex-direction: row;
+        gap: 0;
+        justify-content: space-between;
+        width: 100%;
+    }
 
-        .nav-logo {
-            display: none;
-        }
+    .nav-icon.active::before {
+        left: 50%;
+        bottom: -10px;
+        top: auto;
+        width: 20px;
+        height: 4px;
+        transform: translateX(-50%);
+        border-radius: 4px 4px 0 0;
+    }
 
-        /* Hide logo in bottom bar to save space */
-        .nav-links {
-            flex-direction: row;
-            gap: 0;
-            justify-content: space-between;
-            width: 100%;
-        }
+    .main-stream {
+        grid-row: 1;
+    }
 
-        .nav-icon.active::before {
-            left: 50%;
-            bottom: -10px;
-            top: auto;
-            width: 20px;
-            height: 4px;
-            transform: translateX(-50%);
-            border-radius: 4px 4px 0 0;
-        }
+    .stream-header {
+        padding: 0 20px;
+    }
 
-        .main-stream {
-            grid-row: 1;
-            /* assets/css/2-layout.css */
+    .stream-content {
+        padding: 20px;
+    }
+}
 
-            /* App Container - The "OS" Window */
-            .app-container {
-                display: grid;
-                grid-template-columns: var(--nav-width) 1fr var(--widget-width);
-                grid-template-rows: 100vh;
-                background-color: var(--bg-app);
-                color: var(--text-main);
-                overflow: hidden;
-                /* Prevent body scroll, individual panels scroll */
-            }
+/* Focus Mode Styles */
+body.focus-mode .nav-rail,
+body.focus-mode .widget-panel {
+    display: none !important;
+}
 
-            /* 1. Left Navigation Rail (Dock) */
-            .nav-rail {
-                background-color: var(--bg-panel);
-                border-right: 1px solid var(--border-subtle);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                z-index: 20;
-            }
+body.focus-mode .app-container {
+    grid-template-columns: 1fr;
+    /* Single column */
+}
 
-            .nav-logo {
-                width: 40px;
-                height: 40px;
-                background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                color: white;
-                margin-bottom: 40px;
-                font-family: var(--font-mono);
-                cursor: pointer;
-                transition: transform 0.2s;
-            }
-
-            .nav-logo:hover {
-                transform: scale(1.05);
-                box-shadow: var(--glow-primary);
-            }
-
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-                width: 100%;
-                align-items: center;
-            }
-
-            .nav-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: 10px;
-                color: var(--text-muted);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.2s;
-                cursor: pointer;
-                position: relative;
-            }
-
-            .nav-icon:hover,
-            .nav-icon.active {
-                background-color: var(--bg-panel-hover);
-                color: var(--accent-primary);
-            }
-
-            .nav-icon.active::before {
-                content: '';
-                position: absolute;
-                left: -12px;
-                /* Outside the padding */
-                width: 4px;
-                height: 20px;
-                background-color: var(--accent-primary);
-                border-radius: 0 4px 4px 0;
-            }
-
-            /* 2. Main Content Stream */
-            .main-stream {
-                display: flex;
-                flex-direction: column;
-                overflow-y: auto;
-                /* Independent scroll */
-                padding: 0;
-                position: relative;
-            }
-
-            .stream-header {
-                height: var(--header-height);
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 40px;
-                position: sticky;
-                top: 0;
-                background-color: rgba(9, 9, 11, 0.8);
-                /* Semi-transparent match bg-app */
-                backdrop-filter: blur(12px);
-                z-index: 10;
-                border-bottom: 1px solid var(--border-subtle);
-            }
-
-            .stream-content {
-                padding: 40px;
-                max-width: 900px;
-                margin: 0 auto;
-                width: 100%;
-            }
-
-            /* 3. Right Widget Panel */
-            .widget-panel {
-                background-color: var(--bg-panel);
-                border-left: 1px solid var(--border-subtle);
-                padding: 24px;
-                overflow-y: auto;
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            /* Mobile Adaptation */
-            @media (max-width: 1024px) {
-                .app-container {
-                    grid-template-columns: var(--nav-width) 1fr;
-                    /* Hide widgets on tablet */
-                }
-
-                .widget-panel {
-                    display: none;
-                    /* Or move to a drawer */
-                }
-            }
-
-            @media (max-width: 768px) {
-                .app-container {
-                    grid-template-columns: 1fr;
-                    grid-template-rows: 1fr 60px;
-                    /* Bottom nav */
-                }
-
-                .nav-rail {
-                    grid-row: 2;
-                    flex-direction: row;
-                    width: 100%;
-                    height: 60px;
-                    border-right: none;
-                    border-top: 1px solid var(--border-subtle);
-                    padding: 0 20px;
-                    justify-content: space-around;
-                }
-
-                .nav-logo {
-                    display: none;
-                }
-
-                /* Hide logo in bottom bar to save space */
-                .nav-links {
-                    flex-direction: row;
-                    gap: 0;
-                    justify-content: space-between;
-                    width: 100%;
-                }
-
-                .nav-icon.active::before {
-                    left: 50%;
-                    bottom: -10px;
-                    top: auto;
-                    width: 20px;
-                    height: 4px;
-                    transform: translateX(-50%);
-                    border-radius: 4px 4px 0 0;
-                }
-
-                .main-stream {
-                    grid-row: 1;
-                }
-
-                .stream-header {
-                    padding: 0 20px;
-                }
-
-                .stream-content {
-                    padding: 20px;
-                }
-            }
-
-            /* Focus Mode Styles */
-            body.focus-mode .app-container {
-                grid-template-columns: 0 1fr 0;
-                /* Hide Nav and Widgets */
-            }
-
-            body.focus-mode .nav-rail,
-            body.focus-mode .widget-panel {
-                display: none;
-            }
-
-            body.focus-mode .stream-content {
-                max-width: 800px;
-                /* Optimal reading width */
-                margin: 0 auto;
-            }
+body.focus-mode .stream-content,
+body.focus-mode .post-detail-clean {
+    max-width: 800px;
+    /* Optimal reading width */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
