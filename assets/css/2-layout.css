@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: var(--nav-width) 1fr var(--widget-width);
     grid-template-rows: 100vh;
+    min-height: 100vh;
     background-color: var(--bg-app);
     color: var(--text-main);
     overflow: hidden;
@@ -147,8 +148,11 @@
 @media (max-width: 768px) {
     .app-container {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 60px;
+        grid-template-rows: auto 60px;
         /* Bottom nav */
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
     }
 
     .nav-rail {
@@ -200,6 +204,7 @@
 
     .main-stream {
         grid-row: 1;
+        overflow: visible;
     }
 
     .stream-content {
