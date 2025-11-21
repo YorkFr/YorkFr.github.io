@@ -1,65 +1,60 @@
 /* assets/css/0-theme.css */
 
 :root {
-    /* Advanced Premium Light Theme */
+    /* YorkFr v3.0 - Futuristic Dashboard Theme */
 
-    /* Backgrounds */
-    --bg-body: #f2f4f6;
-    /* Slightly cooler grey for a premium feel */
-    --bg-surface: rgba(255, 255, 255, 0.8);
-    /* Glassy white */
-    --bg-surface-solid: #ffffff;
-    --bg-gradient: radial-gradient(circle at 0% 0%, rgba(232, 240, 254, 0.8) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(255, 235, 238, 0.5) 0%, transparent 50%);
+    /* Core Palette - Dark Mode Default */
+    --bg-app: #09090b;
+    /* Deepest black/grey */
+    --bg-panel: #18181b;
+    /* Panel background */
+    --bg-panel-hover: #27272a;
 
-    /* Text Colors */
-    --text-primary: #1a1a1a;
-    /* Sharp black */
-    --text-secondary: #555555;
-    --text-tertiary: #888888;
+    /* Accents - Cyberpunk/Neon inspired but clean */
+    --accent-primary: #06b6d4;
+    /* Cyan */
+    --accent-secondary: #8b5cf6;
+    /* Violet */
+    --accent-success: #10b981;
+    /* Emerald */
+    --accent-warning: #f59e0b;
+    /* Amber */
 
-    /* Brand / Accent Colors */
-    --primary-color: #0052cc;
-    /* Deep Tech Blue */
-    --primary-hover: #003d99;
-    --primary-light: rgba(0, 82, 204, 0.08);
-
-    /* Accents for Bento Grid */
-    --accent-1: #e8f0fe;
-    /* Light Blue */
-    --accent-2: #fce8e6;
-    /* Light Red */
-    --accent-3: #e6f4ea;
-    /* Light Green */
-    --accent-4: #fef7e0;
-    /* Light Yellow */
+    /* Text */
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --text-dim: #52525b;
 
     /* Borders */
-    --border-color: rgba(0, 0, 0, 0.06);
-    --border-light: rgba(0, 0, 0, 0.03);
+    --border-subtle: #27272a;
+    --border-highlight: #3f3f46;
 
-    /* Layout */
-    --sidebar-width: 260px;
-    --max-content-width: 1100px;
+    /* Dimensions */
+    --nav-width: 72px;
+    /* Icon rail width */
+    --widget-width: 320px;
+    /* Right sidebar width */
+    --header-height: 64px;
 
     /* Typography */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-display: 'Outfit', 'Inter', sans-serif;
-    /* More character for headings */
-    --font-mono: 'SF Mono', 'Fira Code', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-    /* Shapes */
-    --radius-sm: 12px;
-    --radius-md: 20px;
-    --radius-lg: 32px;
-    /* Super rounded for modern feel */
+    /* Effects */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-panel: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --glow-primary: 0 0 20px rgba(6, 182, 212, 0.15);
+}
 
-    /* Shadows - Soft & layered */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 12px 32px rgba(0, 82, 204, 0.12);
-
-    /* Glassmorphism */
-    --glass-blur: blur(20px);
+/* Light Mode Override (Optional, can be toggled via JS) */
+[data-theme="light"] {
+    --bg-app: #f4f4f5;
+    --bg-panel: #ffffff;
+    --bg-panel-hover: #f8fafc;
+    --text-main: #18181b;
+    --text-muted: #71717a;
+    --border-subtle: #e4e4e7;
+    --border-highlight: #d4d4d8;
 }

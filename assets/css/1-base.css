@@ -1,6 +1,6 @@
 /* assets/css/1-base.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 * {
     box-sizing: border-box;
@@ -10,30 +10,29 @@
 
 body {
     font-family: var(--font-sans);
-    color: var(--text-primary);
+    color: var(--text-main);
     line-height: 1.6;
-    background-color: var(--bg-body);
-    background-image: var(--bg-gradient);
-    background-attachment: fixed;
+    background-color: var(--bg-app);
     -webkit-font-smoothing: antialiased;
-    font-size: 16px;
-    overflow-x: hidden;
+    font-size: 15px;
+    overflow: hidden;
+    /* App-like behavior */
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--accent-primary);
     text-decoration: none;
     transition: all 0.2s ease;
     font-weight: 500;
 }
 
 a:hover {
-    color: var(--primary-hover);
+    color: var(--accent-secondary);
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar for Panels */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -41,16 +40,10 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    background: var(--border-highlight);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-    body {
-        font-size: 15px;
-    }
+    background: var(--text-dim);
 }

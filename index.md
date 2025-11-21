@@ -1,52 +1,40 @@
 ---
 layout: default
-title: 首页
+title: Dashboard
 ---
 
-<div class="bento-grid">
-    <!-- Hero Section -->
-    <div class="hero-card">
-        <h1 class="hero-title" data-i18n="hero-greeting">Hi, I'm YorkFr.</h1>
-        <p class="hero-desc" data-i18n="hero-desc">
-            Exploring the intersection of 
-            <span style="color: var(--primary-color);">Technology</span>, 
-            <span style="color: #ea4335;">Design</span>, and 
-            <span style="color: #34a853;">Growth</span>.
+<div class="stream-feed">
+    
+    <!-- Status / Welcome Card -->
+    <div class="stream-card" style="border-left: 4px solid var(--accent-primary);">
+        <div class="card-title">Welcome back, System Online.</div>
+        <p class="card-excerpt" style="margin-bottom: 0;">
+            All systems nominal. You are viewing the <strong>v3.0 Dashboard</strong> interface. 
+            Press <code style="color: var(--accent-primary)">Cmd+K</code> to access the command terminal.
         </p>
     </div>
 
-    <!-- Stats / Quick Info -->
-    <div class="stats-card">
-        <div class="avatar-large">Y</div>
-        <div>
-            <h3 style="margin: 0; font-size: 1.5rem;">YorkFr</h3>
-            <p style="color: var(--text-secondary); margin: 5px 0;">Full Stack Developer</p>
-            <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
-                <span style="background: var(--accent-1); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; color: var(--primary-color);">Coding</span>
-                <span style="background: var(--accent-3); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; color: #34a853;">Design</span>
-            </div>
+    <!-- Post Stream -->
+    {% for post in site.posts %}
+    <article class="stream-card">
+        <div class="card-meta">
+            <i class="ph ph-calendar-blank"></i> {{ post.date | date: "%Y-%m-%d" }}
+            <span style="color: var(--border-highlight)">|</span>
+            <i class="ph ph-folder"></i> {{ post.categories | first }}
         </div>
-    </div>
-</div>
-
-<div class="section-header">
-    <h2 class="section-title" data-i18n="latest-articles">Latest Articles</h2>
-    <a href="/archive" style="font-size: 0.95rem; font-weight: 600;" data-i18n="view-archive">View Archive →</a>
-</div>
-
-<div class="article-grid">
-{% for post in site.posts limit:6 %}
-    <article class="article-card">
-        <div class="article-meta">
-            {{ post.date | date: "%b %d, %Y" }} • {{ post.categories | first }}
-        </div>
-        <a href="{{ post.url }}" class="article-title">{{ post.title }}</a>
-        <p class="article-excerpt">
-            {{ post.excerpt | strip_html | truncate: 100 }}
+        <a href="{{ post.url }}" class="card-title">{{ post.title }}</a>
+        <p class="card-excerpt">
+            {{ post.excerpt | strip_html | truncate: 140 }}
         </p>
-        <a href="{{ post.url }}" class="article-link" data-i18n="read-article">
-            Read Article <span>→</span>
-        </a>
+        <div class="card-actions">
+            <a href="{{ post.url }}" class="action-btn">
+                Read Protocol <i class="ph ph-arrow-right"></i>
+            </a>
+            <span class="action-btn">
+                <i class="ph ph-clock"></i> {{ post.content | number_of_words | divided_by: 180 | plus: 1 }} min read
+            </span>
+        </div>
     </article>
-{% endfor %}
+    {% endfor %}
+
 </div>

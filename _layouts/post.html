@@ -1,72 +1,95 @@
-<div class="post-footer">
-    <a href="/" class="back-link">← Back to Home</a>
-</div>
+---
+layout: default
+---
+
+<article class="post-detail-stream">
+
+    <header class="post-header-stream">
+        <div class="post-meta-stream">
+            <span class="meta-item"><i class="ph ph-calendar-blank"></i> {{ page.date | date: "%Y-%m-%d" }}</span>
+            <span class="meta-item"><i class="ph ph-user"></i> {{ page.author | default: site.title }}</span>
+            <span class="meta-item"><i class="ph ph-folder"></i> {{ page.categories | first }}</span>
+        </div>
+        <h1 class="post-title-stream">{{ page.title }}</h1>
+    </header>
+
+    <div class="post-content-stream">
+        {{ content }}
+    </div>
+
+    <div class="post-footer-stream">
+        <!-- Focus Mode Toggle for Reading -->
+        <button id="focus-toggle-btn" class="action-btn" onclick="toggleFocusMode()">
+            <i class="ph ph-corners-out"></i> Enter Focus Mode
+        </button>
+    </div>
 
 </article>
 
 <style>
-    .post-detail {
-        background-color: var(--bg-surface);
-        padding: 40px;
+    .post-detail-stream {
+        background-color: var(--bg-panel);
+        border: 1px solid var(--border-subtle);
         border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-1);
-        border: 1px solid var(--border-color);
+        padding: 40px;
+        animation: fadeIn 0.3s ease;
     }
 
-    .post-header {
-        margin-bottom: 40px;
-        border-bottom: 1px solid var(--border-light);
-        padding-bottom: 30px;
-        text-align: center;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    .post-meta-top {
-        font-family: var(--font-sans);
-        color: var(--text-tertiary);
+    .post-header-stream {
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 20px;
+    }
+
+    .post-meta-stream {
+        display: flex;
+        gap: 16px;
+        color: var(--text-muted);
         font-size: 0.9rem;
-        font-weight: 500;
         margin-bottom: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        font-family: var(--font-mono);
     }
 
-    .post-title {
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .post-title-stream {
         font-size: 2.5rem;
-        font-weight: 400;
-        color: var(--text-primary);
+        font-weight: 800;
         line-height: 1.2;
-        margin-bottom: 0;
+        color: var(--text-main);
     }
 
-    .post-footer {
-        margin-top: 60px;
-        padding-top: 30px;
-        border-top: 1px solid var(--border-light);
-        text-align: center;
+    .post-content-stream {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-main);
     }
 
-    .back-link {
-        display: inline-block;
-        padding: 10px 24px;
-        background-color: var(--bg-body);
-        border-radius: var(--radius-pill);
-        color: var(--text-secondary);
-        font-weight: 500;
-        transition: all 0.2s ease;
+    .post-content-stream p {
+        margin-bottom: 1.5em;
     }
 
-    .back-link:hover {
-        background-color: var(--primary-light);
-        color: var(--primary-color);
-    }
-
-    @media (max-width: 768px) {
-        .post-detail {
-            padding: 20px;
-        }
-
-        .post-title {
-            font-size: 2rem;
-        }
+    .post-footer-stream {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-subtle);
+        display: flex;
+        justify-content: flex-end;
     }
 </style>
