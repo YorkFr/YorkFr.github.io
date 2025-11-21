@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,12 +17,13 @@
     <link rel="stylesheet" href="/assets/css/4-code-table.css">
     <link rel="stylesheet" href="/assets/css/5-hero.css">
     <link rel="stylesheet" href="/assets/css/6-feed.css">
-    
+
 </head>
+
 <body>
 
     <div class="app-layout">
-        
+
         <aside class="sidebar">
             <div class="brand">
                 <h1><a href="/">{{ site.title }}</a></h1>
@@ -29,10 +31,10 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="/" class="nav-item">🏠 首页 Overview</a>
-                <a href="/archive" class="nav-item">📂 归档 Archive</a>
-                <a href="/about" class="nav-item">😎 关于 About</a>
-                <a href="https://github.com/{{ site.github_username }}" class="nav-item" target="_blank">🔗 GitHub</a>
+                <a href="/" class="nav-item">Overview</a>
+                <a href="/archive" class="nav-item">Archive</a>
+                <a href="/about" class="nav-item">About</a>
+                <a href="https://github.com/YorkFr" class="nav-item" target="_blank">GitHub</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -47,4 +49,5 @@
     </div>
 
 </body>
+
 </html>
