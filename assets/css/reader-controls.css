@@ -150,6 +150,10 @@
     transition: all 0.2s ease;
 }
 
+.focus-mode .focus-toggle {
+    display: none;
+}
+
 .focus-toggle:hover {
     background: var(--accent-primary);
     color: white;

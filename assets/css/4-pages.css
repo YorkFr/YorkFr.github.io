@@ -17,6 +17,18 @@
     font-family: var(--font-sans);
     font-size: 0.9rem;
     margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.post-meta-clean .post-date {
+    flex-shrink: 0;
+}
+
+.focus-mode .post-meta-clean {
+    justify-content: flex-start;
 }
 
 .post-title-clean {

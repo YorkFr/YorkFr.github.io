@@ -5,7 +5,7 @@ layout: default
 <article class="post-detail-clean">
     <header class="post-header-clean">
         <div class="post-meta-clean">
-            {{ page.date | date: "%B %d, %Y" }} &middot; {{ page.categories | join: ', ' }}
+            <span class="post-date">{{ page.date | date: "%B %d, %Y" }} &middot; {{ page.categories | join: ', ' }}</span>
             <!-- Reader Mode Toggle -->
             <button id="focus-mode-toggle" class="focus-toggle" title="Toggle reader mode" type="button">
                 <i class="ph ph-book-open"></i>
