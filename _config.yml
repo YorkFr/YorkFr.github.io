@@ -1,0 +1,6 @@
+title: 我的极简博客主页
+description: >-
+  这是一个由 GitHub Pages 驱动的个人博客，用于记录学习和生活。
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-feed
