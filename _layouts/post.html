@@ -1,80 +1,24 @@
-max-width: 720px;
-margin: 0 auto;
-padding: 40px 0;
-}
+---
+layout: default
+---
 
-.post-header-clean {
-text-align: center;
-margin-bottom: 48px;
-}
+<article class="post-detail-clean">
+    <header class="post-header-clean">
+        <div class="post-meta-clean">
+            {{ page.date | date: "%B %d, %Y" }} · {{ page.categories | join: ', ' }}
+            <!-- Focus Mode Toggle -->
+            <button id="focus-mode-toggle" class="focus-toggle" title="Toggle Focus Mode">
+                <i class="ph ph-arrows-out-simple"></i>
+            </button>
+        </div>
+        <h1 class="post-title-clean">{{ page.title }}</h1>
+    </header>
 
-.post-meta-clean {
-color: var(--text-muted);
-font-family: var(--font-sans);
-font-size: 0.9rem;
-margin-bottom: 16px;
-}
+    <div class="post-content-clean">
+        {{ content }}
+    </div>
 
-.post-title-clean {
-font-size: 2.5rem;
-font-weight: 700;
-line-height: 1.2;
-color: var(--text-main);
-letter-spacing: -0.03em;
-}
-
-/* Typography Reset for Content */
-.post-content-clean {
-font-size: 1.125rem;
-line-height: 1.8;
-color: var(--text-main);
-font-family: var(--font-sans);
-/* Or serif if preferred for reading */
-}
-
-.post-content-clean p {
-margin-bottom: 1.5em;
-}
-
-.post-content-clean h2 {
-font-size: 1.8rem;
-margin-top: 2em;
-margin-bottom: 0.8em;
-font-weight: 600;
-color: var(--text-main);
-}
-
-.post-content-clean h3 {
-font-size: 1.4rem;
-margin-top: 1.5em;
-margin-bottom: 0.6em;
-font-weight: 600;
-}
-
-.post-content-clean ul,
-.post-content-clean ol {
-margin-bottom: 1.5em;
-padding-left: 1.5em;
-}
-
-.post-content-clean li {
-margin-bottom: 0.5em;
-}
-
-.post-content-clean code {
-background-color: var(--bg-panel-hover);
-padding: 2px 6px;
-border-radius: 4px;
-font-family: var(--font-mono);
-font-size: 0.9em;
-color: var(--accent-primary);
-}
-
-.post-footer-clean {
-margin-top: 60px;
-padding-top: 40px;
-border-top: 1px solid var(--border-subtle);
-display: flex;
-justify-content: center;
-}
-</style>
+    <footer class="post-footer-clean">
+        <!-- Optional: Share buttons or "Back to Home" -->
+    </footer>
+</article>
