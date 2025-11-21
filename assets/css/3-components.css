@@ -20,6 +20,14 @@
     /* Cleaner look */
 }
 
+@media (max-width: 768px) {
+    .stream-card {
+        padding: 20px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 .stream-card:hover {
     background-color: var(--bg-app);
     box-shadow: var(--shadow-soft);

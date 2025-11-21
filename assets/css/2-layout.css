@@ -149,6 +149,7 @@
     html, body {
         height: auto;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .app-container {
@@ -159,6 +160,7 @@
         min-height: 100vh;
         overflow: visible;
         padding-bottom: 70px;
+        width: 100%;
     }
 
     .nav-rail {
@@ -198,6 +200,10 @@
         width: auto;
     }
 
+    .nav-home-mobile {
+        display: flex;
+    }
+
     .nav-icon.active::before {
         left: 50%;
         bottom: -10px;
@@ -212,10 +218,11 @@
         grid-row: 1;
         overflow: visible;
         min-height: calc(100vh - 60px);
+        width: 100%;
     }
 
     .stream-content {
-        padding: 20px 16px 32px;
+        padding: 20px 14px 32px;
     }
 }
 
