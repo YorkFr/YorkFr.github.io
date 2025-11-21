@@ -21,14 +21,18 @@ A minimalist, modern personal blog built with Jekyll, featuring a Google AI-insp
 - 🏷️ **Category Filtering** - Click category tags to filter posts instantly
 - ⏰ **Live Clock** - Real-time display in sidebar widget
 - 📖 **Enhanced Focus Mode** - Distraction-free reading with customizable controls
+- ⌨️ **Keyboard Shortcuts** - Press `?` to see all available shortcuts
 
 ### Reading Experience
+- 📊 **Reading Progress Bar** - Visual indicator showing reading progress at page top
+- 📑 **Auto-generated Table of Contents** - Smart TOC generation for posts with 3+ headings
 - 🔤 **Font Size Adjustment** - 4 levels (Small/Medium/Large/XLarge)
 - 📏 **Line Width Control** - 3 options (Narrow/Medium/Wide)
 - ⬆️ **Scroll to Top** - Smooth scroll floating action button
 - ❌ **Quick Exit** - Dedicated exit focus mode button
 - 💻 **Syntax Highlighting** - Mac-style code blocks with window controls
 - 📋 **One-Click Copy** - Copy code with visual feedback
+- 🔗 **Social Share** - Share posts on Twitter, LinkedIn, Facebook, or copy link
 
 ### UI Components
 - Gemini gradient welcome card
@@ -143,12 +147,28 @@ Your content here...
 
 ## 🎯 Key Features Guide
 
+### Keyboard Shortcuts
+Press `?` to see all available keyboard shortcuts. Key shortcuts include:
+- `Ctrl/Cmd+K` - Open search palette
+- `R` - Toggle reader mode (on post pages)
+- `Home` - Scroll to top
+- `End` - Scroll to bottom
+- `Escape` - Close dialogs and search
+- `?` - Show keyboard shortcuts help
+
 ### Search Functionality
 1. Press `Ctrl/Cmd+K` to open search palette
 2. Type to search across titles, excerpts, and categories
 3. Use arrow keys to navigate results
 4. Press `Enter` to open selected post
 5. Press `Escape` to close
+
+### Table of Contents
+- Automatically generated for posts with 3 or more headings
+- Click any heading to jump to that section
+- Active section is highlighted as you scroll
+- Collapse/expand with the arrow button
+- Hidden in focus mode for distraction-free reading
 
 ### Category Filtering
 1. Find category tags in the right sidebar
@@ -166,6 +186,12 @@ Your content here...
    - ⬆️ Scroll to top (smooth scroll)
    - ❌ Exit focus mode
 5. Click book icon again or × button to exit
+
+### Social Sharing
+- Share buttons appear at the bottom of each post
+- Share on Twitter, LinkedIn, or Facebook
+- Copy link to clipboard with one click
+- Visual feedback when link is copied
 
 ### Theme & Language
 - **Theme**: Click sun/moon icon in sidebar
@@ -262,10 +288,14 @@ The project includes a modular JavaScript architecture in `assets/js/modules/`:
 - `time.js` - Live clock widget
 - `language.js` - Bilingual toggle
 - `navigation.js` - Active state management
-- `code-copy.js` - Copy button functionality
-- `search.js` - Command palette search
+- `code-copy.js` - Copy button functionality with duplicate prevention
+- `search.js` - Command palette search with error handling
 - `category-filter.js` - Category filtering
-- `focus-mode.js` - Enhanced reading mode
+- `focus-mode.js` - Enhanced reading mode with improved scroll detection
+- `reading-progress.js` - Reading progress indicator
+- `table-of-contents.js` - Auto-generated TOC with scroll tracking
+- `share.js` - Social media sharing functionality
+- `keyboard-help.js` - Keyboard shortcuts help modal
 
 ## 📊 Performance
 
@@ -307,6 +337,14 @@ This project is developed with the assistance of AI agents. Learn more about wha
 ## 🔄 Recent Updates
 
 ### Latest Features (2025-11)
+- ✨ **Reading progress bar** - Visual indicator at page top
+- 📑 **Auto-generated Table of Contents** - Smart TOC for longer posts
+- 🔗 **Social share buttons** - Easy sharing on social media
+- ⌨️ **Keyboard shortcuts help** - Press `?` to view all shortcuts
+- 🎯 **Enhanced keyboard navigation** - `R` for reader mode, `Home`/`End` for scroll
+- 🐛 **Bug fixes** - Fixed duplicate copy buttons, improved scroll detection, better error handling
+- ♿ **Accessibility improvements** - Added ARIA labels and keyboard navigation
+- 🔒 **Security enhancements** - XSS prevention with HTML escaping
 - ✨ Enhanced focus mode with reader controls
 - 🔤 Font size adjustment (4 levels)
 - 📏 Line width control (3 options)
