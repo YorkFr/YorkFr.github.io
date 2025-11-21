@@ -13,7 +13,10 @@ export function initFocusMode() {
     const articleShell = document.querySelector('.post-detail-clean');
     const fontSlider = document.getElementById('font-slider');
     const fontSizeLabel = document.getElementById('font-size-label');
-    const scrollContainer = document.querySelector('.main-stream');
+    const maybeScrollContainer = document.querySelector('.main-stream');
+    const scrollContainer = (maybeScrollContainer && maybeScrollContainer.scrollHeight > maybeScrollContainer.clientHeight)
+        ? maybeScrollContainer
+        : null;
 
     // Font size state
     const fontSizes = ['font-small', 'font-medium', 'font-large', 'font-xlarge'];
@@ -60,11 +63,7 @@ export function initFocusMode() {
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
             const target = scrollContainer || window;
-            if (scrollContainer) {
-                scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            target.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Show/hide based on scroll position

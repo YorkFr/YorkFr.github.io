@@ -4,10 +4,11 @@
 .app-container {
     display: grid;
     grid-template-columns: var(--nav-width) 1fr var(--widget-width);
+    grid-template-rows: 100vh;
     min-height: 100vh;
     background-color: var(--bg-app);
     color: var(--text-main);
-    overflow-x: hidden;
+    overflow: hidden;
     width: 100%;
     max-width: 100vw;
     /* Prevent body scroll, individual panels scroll */
@@ -123,10 +124,11 @@
 .main-stream {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     padding: 0;
     position: relative;
     width: 100%;
-    overflow: visible;
+    overflow-x: hidden;
 }
 
 /* Header Removed */
@@ -266,6 +268,9 @@ body.focus-mode .widget-panel {
 body.focus-mode .app-container {
     grid-template-columns: 1fr;
     /* Single column */
+    grid-template-rows: auto;
+    min-height: auto;
+    height: auto;
 }
 
 body.focus-mode .stream-content,
@@ -274,4 +279,13 @@ body.focus-mode .post-detail-clean {
     /* Optimal reading width */
     margin: 0 auto;
     padding: 40px 20px;
+}
+
+/* In reader mode, let the page handle scrolling instead of the main column */
+body.focus-mode {
+    overflow-y: auto;
+}
+
+body.focus-mode .main-stream {
+    overflow: visible;
 }
