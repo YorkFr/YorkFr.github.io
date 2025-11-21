@@ -1,6 +1,7 @@
 title: 我的极简博客主页
+email: your-email@example.com
 description: >-
   这是一个由 GitHub Pages 驱动的个人博客，用于记录学习和生活。
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal # 将 cayman 替换为 minimal
 plugins:
   - jekyll-feed
