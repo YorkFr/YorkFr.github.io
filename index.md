@@ -1,28 +1,25 @@
 ---
 layout: default
-title: 博客首页
+title: 首页
 ---
 
-## 欢迎！我是 YorkFr
+## 👋 你好，我是 YorkFr
 
-这是一个关于 **[数学]** 和 **[个人成长]** 的极简博客。
+这里是我的数字花园。我在这里分享关于 **数学**、**编程** 和 **个人成长** 的思考。
 
 ---
 
-### 最新文章
+### 📂 最新文章
 
-{% for post in site.posts limit: 5 %}
-  <h3 style="margin-bottom: 5px;"><a href="{{ post.url | relative_url }}" style="text-decoration: none;">{{ post.title }}</a></h3>
-  <small>{{ post.date | date: "%Y年%m月%d日" }}</small>
-  
-  <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-  <hr style="border-top: 1px dashed #eee;">
+{% for post in site.posts %}
+
+### [{{ post.title }}]({{ post.url }})
+
+<small>{{ post.date | date: "%Y年%m月%d日" }}</small>
+
+{{ post.excerpt | strip_html | truncate: 80 }}
+
+[阅读全文 →]({{ post.url }})
+
+---
 {% endfor %}
-
----
-
-[我的 GitHub 主页](https://github.com/YorkFr)
-
----
-
-> 人生就像一道数学题，过程比结果更重要。
