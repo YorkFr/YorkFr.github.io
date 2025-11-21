@@ -1,0 +1,144 @@
+:root {
+    --sidebar-width: 280px; /* 左侧栏宽度 */
+    --apple-blue: #0071e3;  /* 苹果官方蓝 */
+    --bg-color: #ffffff;    /* 右侧纯白背景 */
+    --sidebar-bg: #f5f5f7;  /* 经典的苹果浅灰背景 */
+    --text-main: #1d1d1f;   /* 近乎黑色的深灰 */
+    --text-gray: #86868b;   /* 辅助文字灰 */
+    --border: #d2d2d7;      /* 边框颜色 */
+}
+
+/* 全局设置 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "SF Pro Text", "SF Pro Icons", "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 核心布局：CSS Grid 双栏 --- */
+.app-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr; /* 左边固定，右边自适应 */
+    min-height: 100vh;
+}
+
+/* --- 左侧：侧边栏 (Sidebar) --- */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    padding: 60px 40px;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    position: sticky; /* 让侧边栏在滚动时固定 */
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    margin-bottom: 40px;
+}
+
+.brand h1 a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.brand p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.4;
+}
+
+/* 导航菜单 */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #424245;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin-left: -12px; /* 视觉修正 */
+    border-radius: 8px; /* 苹果的大圆角风格 */
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(0,0,0,0.05); /* 鼠标悬停时的浅灰底色 */
+    color: #000;
+}
+
+/* 底部版权 */
+.sidebar-footer {
+    margin-top: auto; /* 推到底部 */
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* --- 右侧：主内容区 (Main) --- */
+.content-area {
+    padding: 80px 10%; /* 上下左右留白 */
+    max-width: 900px;  /* 限制内容最大宽度 */
+    margin: 0 auto;    /* 居中 */
+}
+
+/* 文章标题优化 */
+h1, h2, h3 {
+    color: #1d1d1f;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+}
+
+h2 { margin-top: 2em; margin-bottom: 0.8em; font-size: 1.8rem; }
+h3 { margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.4rem; }
+
+/* 链接样式 */
+a { color: var(--apple-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 针对文章列表链接的特殊处理 */
+.content-area a.post-link {
+    color: #1d1d1f;
+    font-weight: 600;
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 5px;
+}
+.content-area a.post-link:hover { color: var(--apple-blue); text-decoration: none; }
+
+/* 引用块 */
+blockquote {
+    border-left: 4px solid var(--apple-blue);
+    padding-left: 16px;
+    color: var(--text-gray);
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* 图片圆角 */
+img { border-radius: 12px; max-width: 100%; height: auto; }
+
+/* --- 移动端适配 (变成单栏) --- */
+@media (max-width: 768px) {
+    .app-layout { grid-template-columns: 1fr; }
+    .sidebar { 
+        height: auto; 
+        position: relative; 
+        padding: 30px 20px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    .content-area { padding: 40px 20px; }
+}
