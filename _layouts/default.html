@@ -7,203 +7,185 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #ffffff;
-            --text-main: #111111;
-            --text-secondary: #666666;
-            --accent: #007AFF; /* iOS 蓝 */
-            --card-hover: #f5f5f7;
-            --border: #eaeaea;
-            --nav-height: 60px;
+            --sidebar-width: 280px; /* 左侧栏宽度 */
+            --apple-blue: #0071e3;  /* 苹果官方蓝 */
+            --bg-color: #ffffff;    /* 右侧纯白背景 */
+            --sidebar-bg: #f5f5f7;  /* 经典的苹果浅灰背景 */
+            --text-main: #1d1d1f;   /* 近乎黑色的深灰 */
+            --text-gray: #86868b;   /* 辅助文字灰 */
+            --border: #d2d2d7;      /* 边框颜色 */
         }
 
-        /* 全局顺滑滚动 */
-        html { scroll-behavior: smooth; }
-
+        /* 全局设置 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* 优先使用无衬线 */
-            background-color: var(--bg);
+            font-family: "SF Pro Text", "SF Pro Icons", "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.6;
+            background-color: var(--bg-color);
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 顶部导航 (毛玻璃效果) --- */
-        header {
-            position: fixed;
+        /* --- 核心布局：CSS Grid 双栏 --- */
+        .app-layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr; /* 左边固定，右边自适应 */
+            min-height: 100vh;
+        }
+
+        /* --- 左侧：侧边栏 (Sidebar) --- */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 60px 40px;
+            border-right: 1px solid rgba(0,0,0,0.05);
+            position: sticky; /* 让侧边栏在滚动时固定 */
             top: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: saturate(180%) blur(20px); /* 核心高级感来源 */
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            z-index: 999;
+            height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        .nav-inner {
-            width: 100%;
-            max-width: 720px; /* 更加收敛的宽度，便于阅读 */
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .brand {
+            margin-bottom: 40px;
         }
 
-        .site-brand {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--text-main);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links a {
-            margin-left: 24px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover { color: var(--text-main); }
-
-        /* --- 布局容器 --- */
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 120px 20px 60px; /* 顶部留出导航栏的高度 */
-            animation: fadeIn 0.6s ease-out; /* 进场动画 */
-        }
-
-        /* --- 排版优化 --- */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5em;
-            line-height: 1.2;
-        }
-
-        h2 {
+        .brand h1 a {
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2.5em;
-            margin-bottom: 1em;
-            letter-spacing: -0.5px;
-        }
-
-        p {
-            margin-bottom: 1.5em;
-            font-size: 1.05rem;
-            color: #333;
-        }
-
-        a {
-            color: var(--text-main);
-            text-decoration: underline;
-            text-decoration-color: rgba(0,0,0,0.2);
-            text-underline-offset: 4px;
-            transition: all 0.2s;
-        }
-
-        a:hover {
-            color: var(--accent);
-            text-decoration-color: var(--accent);
-        }
-
-        /* --- 针对文章列表的特殊样式 (Card 风格) --- */
-        /* 这里的样式会作用于 index.md 里的循环列表 */
-        h3 {
-            margin-top: 20px !important;
-            margin-bottom: 5px !important;
-        }
-        
-        h3 a {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: #000;
             text-decoration: none;
-            border: none;
+            letter-spacing: -0.02em;
         }
 
-        h3 a:hover { color: var(--accent); }
-
-        small {
-            color: #888;
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
+        .brand p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.4;
         }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: var(--border);
-            margin: 40px 0;
+        /* 导航菜单 */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        /* --- 引用块优化 --- */
-        blockquote {
-            border-left: 3px solid var(--text-main);
-            margin: 30px 0;
-            padding-left: 20px;
-            font-family: 'Merriweather', serif; /* 引用使用衬线体，形成对比 */
-            font-style: italic;
-            color: #444;
+        .nav-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #424245;
+            text-decoration: none;
+            padding: 8px 12px;
+            margin-left: -12px; /* 视觉修正 */
+            border-radius: 8px; /* 苹果的大圆角风格 */
+            transition: all 0.2s ease;
         }
 
-        /* --- 底部 --- */
-        footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
+        .nav-item:hover {
+            background-color: rgba(0,0,0,0.05); /* 鼠标悬停时的浅灰底色 */
+            color: #000;
+        }
+
+        .nav-item.active {
+            background-color: #e8e8ed;
+            color: #000;
+        }
+
+        /* 底部版权 */
+        .sidebar-footer {
+            margin-top: auto; /* 推到底部 */
+            font-size: 0.75rem;
             color: #999;
-            font-size: 0.8rem;
-            text-align: center;
         }
 
-        /* --- 简单的进场动画 --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- 右侧：主内容区 (Main) --- */
+        .content-area {
+            padding: 80px 10%; /* 上下左右留白 */
+            max-width: 900px;  /* 限制内容最大宽度 */
+            margin: 0 auto;    /* 居中 */
         }
 
-        /* --- 移动端适配 --- */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .container { padding-top: 100px; }
+        /* 文章标题优化 */
+        h1, h2, h3 {
+            color: #1d1d1f;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+        }
+
+        h2 { margin-top: 2em; margin-bottom: 0.8em; font-size: 1.8rem; }
+        h3 { margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.4rem; }
+
+        /* 链接样式 */
+        a { color: var(--apple-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .content-area a.post-link {
+            color: #1d1d1f;
+            font-weight: 600;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .content-area a.post-link:hover { color: var(--apple-blue); text-decoration: none; }
+
+        /* 引用块 */
+        blockquote {
+            border-left: 4px solid var(--apple-blue);
+            padding-left: 16px;
+            color: var(--text-gray);
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* 图片圆角 */
+        img { border-radius: 12px; max-width: 100%; height: auto; }
+
+        /* --- 移动端适配 (变成单栏) --- */
+        @media (max-width: 768px) {
+            .app-layout { grid-template-columns: 1fr; }
+            .sidebar { 
+                height: auto; 
+                position: relative; 
+                padding: 30px 20px;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            .content-area { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-inner">
-            <a href="/" class="site-brand">{{ site.title }}</a>
-            <nav class="nav-links">
-                <a href="/">首页</a>
-                <a href="/archive">文章</a>
-                <a href="/about">关于</a>
-            </nav>
-        </div>
-    </header>
+    <div class="app-layout">
+        
+        <aside class="sidebar">
+            <div class="brand">
+                <h1><a href="/">{{ site.title }}</a></h1>
+                <p>{{ site.description }}</p>
+            </div>
 
-    <div class="container">
-        <main>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item">🏠 首页 Overview</a>
+                <a href="/archive" class="nav-item">📂 归档 Archive</a>
+                <a href="/about" class="nav-item">😎 关于 About</a>
+                <a href="https://github.com/{{ site.github_username }}" class="nav-item" target="_blank">🔗 GitHub</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                &copy; {{ site.time | date: "%Y" }} {{ site.title }}
+            </div>
+        </aside>
+
+        <main class="content-area">
             {{ content }}
         </main>
 
-        <footer>
-            <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
-        </footer>
     </div>
 
 </body>
