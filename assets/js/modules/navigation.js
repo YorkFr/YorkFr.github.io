@@ -13,12 +13,18 @@ export function initNavigation() {
 
         // Add active class to matching link
         const href = link.getAttribute('href');
-        if (
-            href === path ||
-            (path === '/' && href === '/') ||
-            (href && path.startsWith(href)) ||
-            (href && path === `${href}.html`)
-        ) {
+        const isHome = href === '/';
+
+        if (isHome) {
+            if (path === '/') {
+                link.classList.add('active');
+            }
+            return;
+        }
+
+        if (!href) return;
+
+        if (path === href || path === `${href}/` || path === `${href}.html` || path.startsWith(`${href}/`)) {
             link.classList.add('active');
         }
     });

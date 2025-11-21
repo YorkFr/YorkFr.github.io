@@ -15,8 +15,8 @@ body {
     background-color: var(--bg-app);
     -webkit-font-smoothing: antialiased;
     font-size: 15px;
-    overflow: hidden;
-    /* App-like behavior */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 a {
