@@ -26,11 +26,14 @@ title: Home
 
     <!-- Post Stream -->
     {% for post in site.posts %}
-    <article class="stream-card" data-category="{{ post.categories | first }}">
+    <article class="stream-card" data-categories="{{ post.categories | join: ',' }}">
         <div class="card-meta">
             <i class="ph ph-calendar-blank"></i> {{ post.date | date: "%Y-%m-%d" }}
             <span style="color: var(--border-highlight)">|</span>
-            <i class="ph ph-folder"></i> {{ post.categories | first }}
+            <i class="ph ph-folder"></i>
+            {% for category in post.categories %}
+            {{ category }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
         </div>
         <a href="{{ post.url }}" class="card-title">{{ post.title }}</a>
         <p class="card-excerpt">
