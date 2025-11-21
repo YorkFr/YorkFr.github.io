@@ -4,50 +4,84 @@ title: 文章归档
 permalink: /archive/
 ---
 
-<h1>Archive</h1>
-
-<div class="archive-list">
-  {% for post in site.posts %}
-    <div class="archive-item">
-      <span class="archive-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      <a href="{{ post.url }}" class="archive-title">{{ post.title }}</a>
+<div class="archive-container">
+    <h1>Archive</h1>
+    
+    <div class="archive-list">
+      {% for post in site.posts %}
+        <div class="archive-item">
+          <div class="archive-date">{{ post.date | date: "%b %d" }}</div>
+          <div class="archive-content">
+              <a href="{{ post.url }}" class="archive-title">{{ post.title }}</a>
+              <div class="archive-year">{{ post.date | date: "%Y" }}</div>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-  {% endfor %}
 </div>
 
 <style>
+.archive-container {
+    background-color: var(--bg-surface);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-1);
+    border: 1px solid var(--border-color);
+}
+
 .archive-list {
-    margin-top: 40px;
-    border-left: 2px solid var(--border-color);
-    padding-left: 20px;
+    margin-top: 30px;
 }
+
 .archive-item {
-    margin-bottom: 20px;
-    position: relative;
+    display: flex;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.2s ease;
 }
-.archive-item::before {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 8px;
-    width: 8px;
-    height: 8px;
-    background-color: var(--bg-color);
-    border: 2px solid var(--accent-primary);
-    border-radius: 50%;
+.archive-item:last-child {
+    border-bottom: none;
 }
+.archive-item:hover {
+    background-color: var(--bg-surface-hover);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: var(--radius-sm);
+}
+
 .archive-date {
+    width: 80px;
     font-family: var(--font-mono);
-    color: var(--text-muted);
+    color: var(--text-tertiary);
     font-size: 0.9rem;
-    margin-right: 15px;
+    flex-shrink: 0;
 }
+
+.archive-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .archive-title {
     font-size: 1.1rem;
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-primary);
 }
 .archive-title:hover {
-    color: var(--accent-primary);
+    color: var(--primary-color);
+}
+
+.archive-year {
+    font-size: 0.8rem;
+    color: var(--bg-body); /* Hidden by default or subtle */
+    background-color: var(--text-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.5;
 }
 </style>

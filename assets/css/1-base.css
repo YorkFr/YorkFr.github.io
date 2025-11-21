@@ -8,47 +8,44 @@
 
 body {
     font-family: var(--font-sans);
-    color: var(--text-main);
+    color: var(--text-primary);
     line-height: 1.6;
-    background-color: var(--bg-color);
+    background-color: var(--bg-body);
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     overflow-x: hidden;
-    background-image:
-        radial-gradient(circle at 15% 50%, rgba(41, 151, 255, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(191, 90, 242, 0.08), transparent 25%);
-    background-attachment: fixed;
 }
 
+/* Links */
 a {
-    color: var(--accent-primary);
+    color: var(--primary-color);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
+    font-weight: 500;
 }
 
 a:hover {
+    color: var(--primary-hover);
     text-decoration: none;
-    color: var(--accent-secondary);
-    text-shadow: 0 0 8px var(--accent-glow);
 }
 
-/* Scrollbar Styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-color);
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
+    background: #dadce0;
+    border-radius: 5px;
+    border: 2px solid var(--bg-body);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #bdc1c6;
 }
 
 @media (max-width: 768px) {

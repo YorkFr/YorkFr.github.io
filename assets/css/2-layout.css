@@ -5,87 +5,103 @@
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
     min-height: 100vh;
+    background-color: var(--bg-body);
 }
 
-/* Sidebar - Glassmorphism */
+/* Sidebar - Clean White Panel */
 .sidebar {
-    background-color: var(--sidebar-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 60px 30px;
-    border-right: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+    padding: 40px 30px;
     position: sticky;
     top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    z-index: 100;
+    border-right: none;
+    /* Remove border for cleaner look, maybe use shadow? */
+    box-shadow: 1px 0 0 0 var(--border-light);
+    /* Very subtle separator */
+    z-index: 50;
 }
 
+/* Brand Area */
 .brand {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    padding-left: 12px;
 }
 
 .brand h1 a {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text-main);
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #fff 0%, #a1a1a6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.6rem;
+    font-weight: 500;
+    /* Google Sans style often uses lighter weights for headers */
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Optional: Add a colored dot to logo for 'tech' feel */
+.brand h1 a::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
 }
 
 .brand p {
-    margin-top: 12px;
+    margin-top: 8px;
     font-size: 0.9rem;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
+    color: var(--text-secondary);
 }
 
+/* Navigation */
 .nav-menu {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .nav-item {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-secondary);
-    padding: 10px 16px;
-    border-radius: var(--radius-sm);
+    padding: 12px 24px;
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+    /* Half-pill shape like Google Mail/Keep */
+    margin-left: -12px;
+    /* Pull left to align with edge */
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .nav-item:hover {
-    background-color: var(--surface-hover);
-    color: var(--text-main);
-    transform: translateX(4px);
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
 }
 
 .nav-item.active {
-    background-color: var(--surface-hover);
-    color: var(--accent-primary);
-    box-shadow: inset 2px 0 0 var(--accent-primary);
+    background-color: var(--primary-light);
+    color: var(--primary-color);
 }
 
 .sidebar-footer {
     margin-top: auto;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    opacity: 0.6;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    padding-left: 12px;
 }
 
 /* Content Area */
 .content-area {
-    padding: 80px 80px;
-    max-width: 1200px;
+    padding: 60px 80px;
+    max-width: var(--max-content-width);
     margin: 0 auto;
+    /* Center the content column */
     width: 100%;
 }
 
@@ -98,17 +114,17 @@
     .sidebar {
         height: auto;
         position: relative;
-        padding: 30px 20px;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        background-color: rgba(10, 10, 10, 0.95);
+        padding: 20px;
+        box-shadow: 0 1px 0 0 var(--border-light);
     }
 
     .content-area {
-        padding: 40px 20px;
+        padding: 30px 20px;
     }
 
-    .brand h1 a {
-        font-size: 1.5rem;
+    .nav-item {
+        border-radius: var(--radius-pill);
+        /* Full pill on mobile */
+        margin-left: 0;
     }
 }
