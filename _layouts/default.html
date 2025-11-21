@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -11,46 +11,57 @@
     <link rel="stylesheet" href="/assets/css/2-layout.css">
     <link rel="stylesheet" href="/assets/css/3-components.css">
 
-    <!-- Icons (Phosphor Icons for futuristic look) -->
+    <!-- Google Fonts: Outfit (Modern Geometric) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
 
-    <div class="app-container">
+    <div class="app-container" id="app-root">
 
         <!-- 1. Left Navigation Rail -->
         <nav class="nav-rail">
-            <div class="nav-logo">YF</div>
-
-            <div class="nav-links">
-                <a href="/" class="nav-icon active" title="Dashboard">
-                    <i class="ph ph-squares-four"></i>
-                </a>
-                <a href="/archive" class="nav-icon" title="Archive">
-                    <i class="ph ph-archive-box"></i>
-                </a>
-                <a href="/about" class="nav-icon" title="About">
-                    <i class="ph ph-user-circle"></i>
-                </a>
-                <div class="nav-icon" id="cmd-palette-trigger" title="Command Palette (Cmd+K)">
-                    <i class="ph ph-magnifying-glass"></i>
-                </div>
+            <div class="nav-logo" onclick="window.location.href='/'">
+                <i class="ph-fill ph-asterisk-simple"></i>
             </div>
 
-            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 20px; align-items: center;">
-                <a href="https://github.com/YorkFr" target="_blank" class="nav-icon" title="GitHub">
-                    <i class="ph ph-github-logo"></i>
+            <div class="nav-links">
+                <a href="/" class="nav-icon" title="Home">
+                    <i class="ph ph-house"></i>
                 </a>
+                <a href="/archive" class="nav-icon" title="Archive">
+                    <i class="ph ph-clock-counter-clockwise"></i>
+                </a>
+                <a href="/about" class="nav-icon" title="About">
+                    <i class="ph ph-user"></i>
+                </a>
+            </div>
+
+            <div class="nav-footer">
+                <button class="nav-icon" id="theme-toggle" title="Toggle Theme">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <button class="nav-icon" id="lang-toggle" title="Switch Language">
+                    <span style="font-size: 12px; font-weight: 700;">EN</span>
+                </button>
             </div>
         </nav>
 
         <!-- 2. Main Content Stream -->
         <main class="main-stream">
             <header class="stream-header">
-                <h2 style="font-size: 1.2rem; font-weight: 600;">{{ page.title }}</h2>
-                <div style="display: flex; gap: 10px;">
-                    <!-- Header actions if needed -->
+                <h2 class="page-title">{{ page.title }}</h2>
+                <div class="header-actions">
+                    <button class="icon-btn" id="cmd-trigger" title="Search">
+                        <i class="ph ph-magnifying-glass"></i>
+                    </button>
                 </div>
             </header>
 
@@ -61,73 +72,58 @@
 
         <!-- 3. Right Widget Panel -->
         <aside class="widget-panel">
-            <!-- Clock Widget -->
-            <div class="widget-card">
-                <div class="widget-header">
-                    <span>Local Time</span>
-                    <i class="ph ph-clock"></i>
+
+            <!-- Weather Widget -->
+            <div class="widget-card weather-widget">
+                <div class="weather-icon">
+                    <i class="ph-fill ph-sun"></i>
                 </div>
-                <div class="widget-content" id="clock-widget"
-                    style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: bold;">
-                    --:--
+                <div class="weather-info">
+                    <span class="temp" id="weather-temp">24°</span>
+                    <span class="desc" id="weather-desc">Sunny</span>
+                    <span class="loc">San Francisco, CA</span>
                 </div>
             </div>
 
-            <!-- Profile Widget -->
-            <div class="widget-card">
-                <div class="widget-content" style="text-align: center;">
-                    <div
-                        style="width: 60px; height: 60px; background: var(--accent-primary); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; color: #000;">
-                        Y</div>
-                    <h3 style="margin-bottom: 5px;">YorkFr</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Full Stack Developer</p>
+            <!-- Profile / Bio -->
+            <div class="widget-card profile-widget">
+                <div class="profile-header">
+                    <div class="avatar">Y</div>
+                    <div>
+                        <h3>YorkFr</h3>
+                        <p>AI & Web Engineer</p>
+                    </div>
                 </div>
+                <p class="profile-bio">
+                    Exploring the intersection of design, code, and artificial intelligence.
+                </p>
             </div>
 
-            <!-- Tags/Categories Widget -->
-            <div class="widget-card">
-                <div class="widget-header">
-                    <span>Explore</span>
-                    <i class="ph ph-hash"></i>
+            <!-- Google AI Style Link -->
+            <a href="https://ai.google" target="_blank" class="widget-card promo-card">
+                <div class="promo-content">
+                    <span>Inspired by</span>
+                    <strong>Google DeepMind</strong>
                 </div>
-                <div class="widget-content" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                    <span class="tag-pill">Tech</span>
-                    <span class="tag-pill">Design</span>
-                    <span class="tag-pill">Life</span>
-                    <span class="tag-pill">WSL</span>
-                </div>
-            </div>
+                <i class="ph ph-arrow-up-right"></i>
+            </a>
+
         </aside>
 
     </div>
 
-    <!-- Command Palette Modal (Hidden by default) -->
+    <!-- Command Palette Modal -->
     <div id="cmd-palette" class="cmd-overlay" style="display: none;">
         <div class="cmd-modal">
             <div class="cmd-input-wrapper">
                 <i class="ph ph-magnifying-glass"></i>
-                <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
-                <span class="cmd-shortcut">ESC</span>
+                <input type="text" id="cmd-input" placeholder="Search..." autocomplete="off">
             </div>
             <div class="cmd-results">
-                <div class="cmd-group">
-                    <div class="cmd-group-title">Navigation</div>
-                    <a href="/" class="cmd-item">
-                        <i class="ph ph-house"></i> Go to Dashboard
-                    </a>
-                    <a href="/archive" class="cmd-item">
-                        <i class="ph ph-archive-box"></i> Go to Archive
-                    </a>
-                    <a href="/about" class="cmd-item">
-                        <i class="ph ph-user"></i> Go to About
-                    </a>
-                </div>
-                <div class="cmd-group">
-                    <div class="cmd-group-title">Actions</div>
-                    <div class="cmd-item" onclick="toggleTheme()">
-                        <i class="ph ph-moon"></i> Toggle Theme
-                    </div>
-                </div>
+                <!-- Results populated by JS -->
+                <a href="/" class="cmd-item"><i class="ph ph-house"></i> Home</a>
+                <a href="/archive" class="cmd-item"><i class="ph ph-clock"></i> Archive</a>
+                <a href="/about" class="cmd-item"><i class="ph ph-user"></i> About</a>
             </div>
         </div>
     </div>

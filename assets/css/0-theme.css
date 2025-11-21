@@ -1,60 +1,69 @@
 /* assets/css/0-theme.css */
 
 :root {
-    /* YorkFr v3.0 - Futuristic Dashboard Theme */
+    /* YorkFr v3.1 - Google AI Inspired Theme */
 
-    /* Core Palette - Dark Mode Default */
-    --bg-app: #09090b;
-    /* Deepest black/grey */
-    --bg-panel: #18181b;
-    /* Panel background */
-    --bg-panel-hover: #27272a;
-
-    /* Accents - Cyberpunk/Neon inspired but clean */
-    --accent-primary: #06b6d4;
-    /* Cyan */
-    --accent-secondary: #8b5cf6;
-    /* Violet */
-    --accent-success: #10b981;
-    /* Emerald */
-    --accent-warning: #f59e0b;
-    /* Amber */
+    /* Core Palette - Light Mode Default */
+    --bg-app: #ffffff;
+    --bg-panel: #f8f9fa;
+    /* Very subtle grey for panels */
+    --bg-panel-hover: #f1f3f4;
 
     /* Text */
-    --text-main: #f4f4f5;
-    --text-muted: #a1a1aa;
-    --text-dim: #52525b;
+    --text-main: #1f1f1f;
+    /* Google Grey 900 */
+    --text-muted: #5f6368;
+    /* Google Grey 700 */
+    --text-dim: #80868b;
 
     /* Borders */
-    --border-subtle: #27272a;
-    --border-highlight: #3f3f46;
+    --border-subtle: #dadce0;
+    --border-highlight: #bdc1c6;
+
+    /* Accents - Gemini Gradients */
+    --accent-primary: #4285f4;
+    /* Google Blue */
+    --accent-secondary: #9c27b0;
+    /* Purple */
+    --accent-tertiary: #ffcc80;
+    /* Peach */
+
+    /* Gradient for text/buttons */
+    --gradient-gemini: linear-gradient(135deg, #4285f4, #9c27b0, #ffcc80);
 
     /* Dimensions */
-    --nav-width: 72px;
-    /* Icon rail width */
-    --widget-width: 320px;
-    /* Right sidebar width */
-    --header-height: 64px;
+    --nav-width: 80px;
+    --widget-width: 360px;
+    --header-height: 72px;
 
     /* Typography */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: 'Outfit', 'Google Sans', 'Inter', sans-serif;
+    /* Clean, geometric */
+    --font-mono: 'JetBrains Mono', monospace;
 
     /* Effects */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --shadow-panel: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --glow-primary: 0 0 20px rgba(6, 182, 212, 0.15);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    /* More rounded */
+    --shadow-soft: 0 2px 6px rgba(60, 64, 67, 0.05), 0 1px 2px rgba(60, 64, 67, 0.05);
+    --shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.10);
 }
 
-/* Light Mode Override (Optional, can be toggled via JS) */
-[data-theme="light"] {
-    --bg-app: #f4f4f5;
-    --bg-panel: #ffffff;
-    --bg-panel-hover: #f8fafc;
-    --text-main: #18181b;
-    --text-muted: #71717a;
-    --border-subtle: #e4e4e7;
-    --border-highlight: #d4d4d8;
+/* Dark Mode Override */
+[data-theme="dark"] {
+    --bg-app: #131314;
+    /* Google Dark Grey */
+    --bg-panel: #1e1e20;
+    --bg-panel-hover: #2c2c2e;
+
+    --text-main: #e3e3e3;
+    --text-muted: #c4c7c5;
+    --text-dim: #8e918f;
+
+    --border-subtle: #444746;
+    --border-highlight: #5e5e5e;
+
+    --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
 }

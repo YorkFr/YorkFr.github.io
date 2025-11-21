@@ -1,121 +1,116 @@
 /* assets/js/main.js */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initClock();
+    initTheme();
+    initWeather();
     initCommandPalette();
     initNavigation();
 });
 
-/* --- 1. Clock Widget --- */
-function initClock() {
-    const clockEl = document.getElementById('clock-widget');
-    if (!clockEl) return;
+/* --- 1. Theme Toggle --- */
+function initTheme() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
 
-    function updateTime() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        clockEl.textContent = `${hours}:${minutes}`;
+    // Check local storage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
     }
 
-    updateTime();
-    setInterval(updateTime, 1000); // Update every second
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+
+            // Update icon
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+                icon.className = next === 'dark' ? 'ph ph-sun' : 'ph ph-moon';
+            }
+        });
+    }
 }
 
-/* --- 2. Command Palette Logic --- */
+/* --- 2. Weather Widget --- */
+function initWeather() {
+    const tempEl = document.getElementById('weather-temp');
+    const descEl = document.getElementById('weather-desc');
+
+    if (!tempEl || !descEl) return;
+
+    // Mock data for now (API requires key)
+    // In a real app, fetch from OpenWeatherMap or similar
+    const weatherData = {
+        temp: 22,
+        condition: 'Partly Cloudy'
+    };
+
+    tempEl.textContent = `${weatherData.temp}°`;
+    descEl.textContent = weatherData.condition;
+}
+
+/* --- 3. Command Palette (Simplified) --- */
 function initCommandPalette() {
     const palette = document.getElementById('cmd-palette');
     const input = document.getElementById('cmd-input');
-    const trigger = document.getElementById('cmd-palette-trigger');
+    const trigger = document.getElementById('cmd-trigger');
 
     if (!palette || !input) return;
 
-    // Open/Close functions
     const openPalette = () => {
         palette.style.display = 'flex';
         input.focus();
-        input.value = ''; // Clear input
+        input.value = '';
     };
 
     const closePalette = () => {
         palette.style.display = 'none';
     };
 
-    // Trigger click
-    if (trigger) {
-        trigger.addEventListener('click', openPalette);
-    }
+    if (trigger) trigger.addEventListener('click', openPalette);
 
-    // Keyboard Shortcuts
-    document.addEventListener('keydown', (e) => {
-        // Cmd+K or Ctrl+K to open
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-            e.preventDefault();
-            openPalette();
-        }
-        // ESC to close
-        if (e.key === 'Escape' && palette.style.display === 'flex') {
-            closePalette();
-        }
-    });
-
-    // Click outside to close
+    // Close on outside click
     palette.addEventListener('click', (e) => {
-        if (e.target === palette) {
-            closePalette();
-        }
+        if (e.target === palette) closePalette();
     });
 
-    // Simple Filter Logic (Mock)
+    // Filter Logic
     input.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const items = document.querySelectorAll('.cmd-item');
-
         items.forEach(item => {
             const text = item.textContent.toLowerCase();
-            if (text.includes(term)) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
+            item.style.display = text.includes(term) ? 'flex' : 'none';
         });
     });
 }
 
-/* --- 3. Navigation Active State --- */
+/* --- 4. Navigation Active State --- */
 function initNavigation() {
     const path = window.location.pathname;
     const links = document.querySelectorAll('.nav-icon');
 
     links.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === path) {
+        if (link.getAttribute('href') === path) {
             link.classList.add('active');
-        } else {
-            link.classList.remove('active');
         }
     });
 }
 
-/* --- 4. Theme Toggle (Optional) --- */
-window.toggleTheme = function () {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', next);
-
-    // Close palette after action
-    document.getElementById('cmd-palette').style.display = 'none';
-}
-
-/* --- 5. Focus Mode --- */
-window.toggleFocusMode = function () {
-    document.body.classList.toggle('focus-mode');
-    const btn = document.getElementById('focus-toggle-btn');
-    if (btn) {
-        const isFocus = document.body.classList.contains('focus-mode');
-        btn.innerHTML = isFocus
-            ? '<i class="ph ph-corners-in"></i> Exit Focus Mode'
-            : '<i class="ph ph-corners-out"></i> Enter Focus Mode';
+/* --- 5. Full Screen Mode --- */
+window.toggleFullScreen = function () {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
     }
 }

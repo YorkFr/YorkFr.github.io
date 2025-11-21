@@ -2,94 +2,109 @@
 layout: default
 ---
 
-<article class="post-detail-stream">
+<article class="post-detail-clean">
 
-    <header class="post-header-stream">
-        <div class="post-meta-stream">
-            <span class="meta-item"><i class="ph ph-calendar-blank"></i> {{ page.date | date: "%Y-%m-%d" }}</span>
-            <span class="meta-item"><i class="ph ph-user"></i> {{ page.author | default: site.title }}</span>
-            <span class="meta-item"><i class="ph ph-folder"></i> {{ page.categories | first }}</span>
+    <header class="post-header-clean">
+        <div class="post-meta-clean">
+            <span>{{ page.date | date: "%B %d, %Y" }}</span>
+            <span>&bull;</span>
+            <span>{{ page.categories | first }}</span>
         </div>
-        <h1 class="post-title-stream">{{ page.title }}</h1>
+        <h1 class="post-title-clean">{{ page.title }}</h1>
     </header>
 
-    <div class="post-content-stream">
+    <div class="post-content-clean">
         {{ content }}
     </div>
 
-    <div class="post-footer-stream">
-        <!-- Focus Mode Toggle for Reading -->
-        <button id="focus-toggle-btn" class="action-btn" onclick="toggleFocusMode()">
-            <i class="ph ph-corners-out"></i> Enter Focus Mode
+    <div class="post-footer-clean">
+        <button class="action-btn" onclick="toggleFullScreen()">
+            <i class="ph ph-arrows-out-simple"></i> Full Screen Reading
         </button>
     </div>
 
 </article>
 
 <style>
-    .post-detail-stream {
-        background-color: var(--bg-panel);
-        border: 1px solid var(--border-subtle);
-        border-radius: var(--radius-lg);
-        padding: 40px;
-        animation: fadeIn 0.3s ease;
+    /* Clean Reading Layout */
+    .post-detail-clean {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 0;
     }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .post-header-clean {
+        text-align: center;
+        margin-bottom: 48px;
     }
 
-    .post-header-stream {
-        margin-bottom: 30px;
-        border-bottom: 1px solid var(--border-subtle);
-        padding-bottom: 20px;
-    }
-
-    .post-meta-stream {
-        display: flex;
-        gap: 16px;
+    .post-meta-clean {
         color: var(--text-muted);
+        font-family: var(--font-sans);
         font-size: 0.9rem;
         margin-bottom: 16px;
-        font-family: var(--font-mono);
     }
 
-    .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-
-    .post-title-stream {
+    .post-title-clean {
         font-size: 2.5rem;
-        font-weight: 800;
+        font-weight: 700;
         line-height: 1.2;
         color: var(--text-main);
+        letter-spacing: -0.03em;
     }
 
-    .post-content-stream {
-        font-size: 1.1rem;
+    /* Typography Reset for Content */
+    .post-content-clean {
+        font-size: 1.125rem;
         line-height: 1.8;
         color: var(--text-main);
+        font-family: var(--font-sans);
+        /* Or serif if preferred for reading */
     }
 
-    .post-content-stream p {
+    .post-content-clean p {
         margin-bottom: 1.5em;
     }
 
-    .post-footer-stream {
-        margin-top: 40px;
-        padding-top: 20px;
+    .post-content-clean h2 {
+        font-size: 1.8rem;
+        margin-top: 2em;
+        margin-bottom: 0.8em;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+
+    .post-content-clean h3 {
+        font-size: 1.4rem;
+        margin-top: 1.5em;
+        margin-bottom: 0.6em;
+        font-weight: 600;
+    }
+
+    .post-content-clean ul,
+    .post-content-clean ol {
+        margin-bottom: 1.5em;
+        padding-left: 1.5em;
+    }
+
+    .post-content-clean li {
+        margin-bottom: 0.5em;
+    }
+
+    .post-content-clean code {
+        background-color: var(--bg-panel-hover);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        color: var(--accent-primary);
+    }
+
+    .post-footer-clean {
+        margin-top: 60px;
+        padding-top: 40px;
         border-top: 1px solid var(--border-subtle);
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     }
 </style>
