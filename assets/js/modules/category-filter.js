@@ -7,32 +7,57 @@ export function initCategoryFilter() {
 
     if (!categoryTags.length || !postCards.length) return;
 
+    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
+    const applyCategory = (category) => {
+        activeCategory = category;
+
+        // Update active states
+        categoryTags.forEach(t => {
+            if (category && t.dataset.category === category) {
+                t.classList.add('active');
+            } else {
+                t.classList.remove('active');
+            }
+        });
+
+        // Show/hide posts
+        postCards.forEach(card => {
+            if (!category) {
+                card.style.display = '';
+                return;
+            }
+            const categories = card.dataset.categories.split(',').map(c => c.trim());
+            card.style.display = categories.includes(category) ? '' : 'none';
+        });
+    };
+
+    // Pre-select from query param on home
+    const preset = new URLSearchParams(window.location.search).get('category');
+    if (isHome && preset) {
+        applyCategory(preset);
+    }
+
     categoryTags.forEach(tag => {
         tag.addEventListener('click', (e) => {
             e.preventDefault();
             const category = tag.dataset.category;
 
-            // Toggle category selection
+            // If not on home, navigate with query to trigger filter there
+            if (!isHome) {
+                window.location.href = `/?category=${encodeURIComponent(category)}`;
+                return;
+            }
+
+            // Toggle selection on home without leaving page
             if (activeCategory === category) {
-                // Deselect - show all posts
-                activeCategory = null;
-                categoryTags.forEach(t => t.classList.remove('active'));
-                postCards.forEach(card => {
-                    card.style.display = '';
-                });
+                applyCategory(null);
             } else {
-                // Select new category
-                activeCategory = category;
-
-                // Update active state
-                categoryTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-
-                // Filter posts - cards can contain multiple comma-separated categories
-                postCards.forEach(card => {
-                    const categories = card.dataset.categories.split(',').map(c => c.trim());
-                    card.style.display = categories.includes(category) ? '' : 'none';
-                });
+                applyCategory(category);
+                // Update URL without reload
+                const url = new URL(window.location.href);
+                url.searchParams.set('category', category);
+                window.history.replaceState({}, '', url.toString());
             }
         });
     });
