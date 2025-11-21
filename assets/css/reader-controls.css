@@ -1,0 +1,145 @@
+/* Reader Controls Panel */
+.reader-controls {
+    display: none;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: var(--shadow-soft);
+}
+
+.focus-mode .reader-controls {
+    display: block;
+}
+
+.control-group {
+    margin-bottom: 16px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.control-group label i {
+    font-size: 1.1rem;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    flex: 1;
+    padding: 8px 16px;
+    background: var(--bg-panel-hover);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.control-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+/* Floating Action Buttons */
+.focus-fab-container {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+}
+
+.focus-mode .focus-fab-container {
+    display: flex;
+}
+
+.focus-fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+}
+
+.focus-fab:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.focus-fab:active {
+    transform: translateY(0);
+}
+
+/* Font Size Classes */
+.post-content-clean.font-small {
+    font-size: 0.95rem;
+}
+
+.post-content-clean.font-medium {
+    font-size: 1.1rem;
+    /* default */
+}
+
+.post-content-clean.font-large {
+    font-size: 1.25rem;
+}
+
+.post-content-clean.font-xlarge {
+    font-size: 1.4rem;
+}
+
+/* Line Width Classes */
+.post-content-clean.width-narrow {
+    max-width: 600px;
+}
+
+.post-content-clean.width-medium {
+    max-width: 800px;
+    /* default */
+}
+
+.post-content-clean.width-wide {
+    max-width: 1000px;
+}
+
+/* Better Focus Toggle Icon */
+.focus-toggle i {
+    font-size: 1.2rem;
+}
