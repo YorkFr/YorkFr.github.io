@@ -1,44 +1,40 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+---
+layout: default
+title: 首页
+---
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    
-</head>
-<body>
+<div class="hero-section">
+    <h1 class="hero-title">👋 你好，我是 YorkFr</h1>
+    <p class="hero-desc">
+        这里是我的数字花园。我在这里分享关于 <b>数学</b>、<b>编程</b> 和 <b>个人成长</b> 的思考。
+    </p>
+</div>
 
-    <div class="app-layout">
+<div class="posts-container">
+    
+    {% for post in site.posts %}
+    <article class="post-item">
         
-        <aside class="sidebar">
-            <div class="brand">
-                <h1><a href="/">{{ site.title }}</a></h1>
-                <p>{{ site.description }}</p>
-            </div>
+        <div class="post-meta">
+            {{ post.date | date: "%Y/%m/%d" }}
+        </div>
 
-            <nav class="nav-menu">
-                <a href="/" class="nav-item">🏠 首页 Overview</a>
-                <a href="/archive" class="nav-item">📂 归档 Archive</a>
-                <a href="/about" class="nav-item">😎 关于 About</a>
-                <a href="https://github.com/{{ site.github_username }}" class="nav-item" target="_blank">🔗 GitHub</a>
-            </nav>
+        <a href="{{ post.url }}" class="post-title-link">
+            {{ post.title }}
+        </a>
 
-            <div class="sidebar-footer">
-                &copy; {{ site.time | date: "%Y" }} {{ site.title }}
-            </div>
-        </aside>
+        <div class="post-excerpt">
+            {{ post.excerpt | strip_html | truncate: 100 }}
+        </div>
 
-        <main class="content-area">
-            {{ content }}
-        </main>
+        <a href="{{ post.url }}" class="read-more">
+            阅读全文 →
+        </a>
 
-    </div>
+    </article>
+    {% endfor %}
+
+</div>
 
 </body>
 </html>
