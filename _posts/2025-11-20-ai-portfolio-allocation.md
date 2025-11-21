@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using AI To Rebalance A Personal Portfolio"
-date: 2025-11-23
+date: 2025-11-20
 categories: [AI, Finance]
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Agentic Research Notes For AI Macro Trading"
-date: 2025-11-23
-categories: [AI, Finance, Macro]
+date: 2025-11-20
+categories: [AI, Finance]
 ---
 
 The hottest topic in hedge fund circles this fall is “agentic research”: autonomous AI agents that gather macro data, write summaries, and even suggest trades. I spent the past month building a small-scale version tailored to my discretionary macro trading.

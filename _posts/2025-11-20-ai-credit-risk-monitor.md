@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "AI Credit Risk Monitor For Private Credit Funds"
-date: 2025-11-23
-categories: [AI, Finance, Risk]
+date: 2025-11-20
+categories: [AI, Finance]
 ---
 
 Private credit has grown into a trillion-dollar asset class, yet risk reporting is still dominated by quarterly PDFs. I built an AI credit monitor for a friend’s fund that ingests unstructured data and surfaces daily red flags.

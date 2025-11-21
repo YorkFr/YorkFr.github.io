@@ -1,3 +1,11 @@
+---
+layout: post
+title: "AI Agent 能力说明 / AI Agent Capabilities"
+author: YorkFr
+date: 2025-11-20
+categories: [AI]
+---
+
 # AI Agent 能力说明 / AI Agent Capabilities
 
 ## 🤖 什么是 AI Agent？/ What is an AI Agent?

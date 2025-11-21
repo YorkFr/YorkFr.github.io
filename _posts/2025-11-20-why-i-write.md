@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Why I Started Writing Online"
-date: 2025-11-21
-categories: [Growth, Life]
+date: 2025-11-20
+categories: [Growth]
 author: YorkFr
 ---
 
