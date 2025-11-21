@@ -91,8 +91,30 @@
     color: var(--accent-primary);
 }
 
+.nav-icon.active::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: 4px;
+    height: 24px;
+    background-color: var(--accent-primary);
+    border-radius: 0 4px 4px 0;
+}
+
 .nav-icon i {
     font-size: 24px;
+}
+
+.gemini-home {
+    background: linear-gradient(135deg, #7c4dff, #5fe1ff);
+    color: white;
+    box-shadow: var(--shadow-soft);
+}
+
+.gemini-home:hover,
+.gemini-home.active {
+    background: linear-gradient(135deg, #6b3dff, #4ad6ff);
+    color: white;
 }
 
 /* 2. Main Content Stream */
@@ -191,6 +213,16 @@
         gap: 20px;
         justify-content: center;
         width: auto;
+    }
+
+    .nav-icon.active::before {
+        left: 50%;
+        bottom: -10px;
+        top: auto;
+        width: 20px;
+        height: 4px;
+        transform: translateX(-50%);
+        border-radius: 4px 4px 0 0;
     }
 
     .nav-home-mobile {
