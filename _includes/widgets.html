@@ -22,4 +22,21 @@
         </p>
     </div>
 
+    <!-- Categories Widget -->
+    <div class="widget-card">
+        <h3 style="margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text-main);">
+            <span class="lang-en">Categories</span>
+            <span class="lang-zh">分类</span>
+        </h3>
+        <div class="category-list">
+            {% assign categories = site.categories | sort %}
+            {% for category in categories %}
+            <a href="#" class="category-tag" data-category="{{ category[0] }}">
+                {{ category[0] }}
+                <span class="category-count">{{ category[1].size }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
 </aside>
