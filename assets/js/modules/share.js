@@ -79,16 +79,49 @@ function shareToFacebook(url) {
 }
 
 function copyToClipboard(url, btn) {
-    navigator.clipboard.writeText(url).then(() => {
-        const originalIcon = btn.innerHTML;
-        btn.innerHTML = '<i class="ph ph-check"></i>';
-        btn.classList.add('copied');
-        
-        setTimeout(() => {
-            btn.innerHTML = originalIcon;
-            btn.classList.remove('copied');
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-    });
+    // Try modern Clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            showCopySuccess(btn);
+        }).catch(err => {
+            console.error('Clipboard API failed:', err);
+            fallbackCopy(url, btn);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopy(url, btn);
+    }
+}
+
+function fallbackCopy(text, btn) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopySuccess(btn);
+        } else {
+            console.error('Fallback copy failed');
+        }
+    } catch (err) {
+        console.error('Fallback copy error:', err);
+    } finally {
+        document.body.removeChild(textarea);
+    }
+}
+
+function showCopySuccess(btn) {
+    const originalIcon = btn.innerHTML;
+    btn.innerHTML = '<i class="ph ph-check"></i>';
+    btn.classList.add('copied');
+    
+    setTimeout(() => {
+        btn.innerHTML = originalIcon;
+        btn.classList.remove('copied');
+    }, 2000);
 }

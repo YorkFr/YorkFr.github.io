@@ -1,5 +1,15 @@
 /* Keyboard Shortcuts Help Modal Module */
 
+// Helper function to check if user is typing in an input field
+function isTypingInInputField(event) {
+    return event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA';
+}
+
+// Helper function to check if shortcut key is pressed alone (no modifiers)
+function isShortcutKeyAlone(event) {
+    return !event.ctrlKey && !event.metaKey && !event.altKey;
+}
+
 export function initKeyboardHelp() {
     // Create help modal
     const helpModal = document.createElement('div');
@@ -114,9 +124,9 @@ export function initKeyboardHelp() {
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         // ? key - show help
-        if (e.key === '?' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (e.key === '?' && isShortcutKeyAlone(e)) {
             // Don't trigger if user is typing in an input
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (isTypingInInputField(e)) return;
             e.preventDefault();
             openHelp();
         }
@@ -127,8 +137,8 @@ export function initKeyboardHelp() {
         }
         
         // R key - toggle reader mode (only on post pages)
-        if (e.key === 'r' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'r' && isShortcutKeyAlone(e)) {
+            if (isTypingInInputField(e)) return;
             const focusToggle = document.getElementById('focus-mode-toggle');
             if (focusToggle) {
                 e.preventDefault();
@@ -137,15 +147,15 @@ export function initKeyboardHelp() {
         }
         
         // Home key - scroll to top
-        if (e.key === 'Home' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'Home' && isShortcutKeyAlone(e)) {
+            if (isTypingInInputField(e)) return;
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // End key - scroll to bottom
-        if (e.key === 'End' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'End' && isShortcutKeyAlone(e)) {
+            if (isTypingInInputField(e)) return;
             e.preventDefault();
             window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
         }

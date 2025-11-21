@@ -1,5 +1,13 @@
 /* Table of Contents Generator Module */
 
+// Configuration constants
+const TOC_CONFIG = {
+    MIN_HEADINGS: 3,
+    MAX_ID_LENGTH: 50,
+    OBSERVER_ROOT_MARGIN: '-80px 0px -80% 0px',
+    OBSERVER_THRESHOLD: 0
+};
+
 export function initTableOfContents() {
     // Only run on post pages
     const postContent = document.querySelector('.post-content-clean');
@@ -8,8 +16,8 @@ export function initTableOfContents() {
     // Find all headings (h2, h3)
     const headings = postContent.querySelectorAll('h2, h3');
     
-    // Don't create TOC if there are fewer than 3 headings
-    if (headings.length < 3) return;
+    // Don't create TOC if there are fewer than required headings
+    if (headings.length < TOC_CONFIG.MIN_HEADINGS) return;
 
     // Create TOC container
     const tocContainer = document.createElement('div');
@@ -38,7 +46,7 @@ export function initTableOfContents() {
                 .toLowerCase()
                 .replace(/[^\w\s-]/g, '')
                 .replace(/\s+/g, '-')
-                .substring(0, 50);
+                .substring(0, TOC_CONFIG.MAX_ID_LENGTH);
             heading.id = `${id}-${index}`;
         }
 
@@ -89,8 +97,8 @@ export function initTableOfContents() {
 
     // Highlight current section on scroll
     const observerOptions = {
-        rootMargin: '-80px 0px -80% 0px',
-        threshold: 0
+        rootMargin: TOC_CONFIG.OBSERVER_ROOT_MARGIN,
+        threshold: TOC_CONFIG.OBSERVER_THRESHOLD
     };
 
     const observer = new IntersectionObserver((entries) => {
