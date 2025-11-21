@@ -1,0 +1,29 @@
+/* assets/css/1-base.css */
+
+:root {
+    --sidebar-width: 280px;
+    --apple-blue: #0071e3;
+    --bg-color: #ffffff;
+    --sidebar-bg: #f5f5f7;
+    --text-main: #1d1d1f;
+    --text-gray: #86868b;
+    --border: #d2d2d7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "SF Pro Text", "SF Pro Icons", "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--apple-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 针对移动端的简单调整 */
+@media (max-width: 768px) {
+    body { font-size: 16px; }
+}
