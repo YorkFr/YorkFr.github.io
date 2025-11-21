@@ -18,6 +18,9 @@ body {
     line-height: 1.6;
     background-color: var(--bg-color);
     -webkit-font-smoothing: antialiased;
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 18px;
 }
 
 a { color: var(--apple-blue); text-decoration: none; }
