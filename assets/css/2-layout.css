@@ -34,37 +34,6 @@
 .nav-bottom {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.nav-logo {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 40px;
-    font-family: var(--font-mono);
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.nav-logo:hover {
-    transform: scale(1.05);
-    box-shadow: var(--glow-primary);
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     width: 100%;
     align-items: center;
 }

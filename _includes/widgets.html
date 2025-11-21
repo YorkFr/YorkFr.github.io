@@ -22,4 +22,19 @@
         </p>
     </div>
 
+    <!-- Category Widget -->
+    <div class="widget-card category-widget">
+        <h3 class="widget-title">Categories</h3>
+        <ul class="category-list">
+            {% for category in site.categories %}
+            <li class="category-item">
+                <a href="/category/{{ category[0] | slugify }}" class="category-link">
+                    <span class="category-name">{{ category[0] }}</span>
+                    <span class="category-count">{{ category[1].size }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </aside>
