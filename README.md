@@ -2,6 +2,9 @@
 
 A minimalist, modern personal blog built with Jekyll, featuring a Google AI-inspired design aesthetic with advanced reading controls.
 
+> 🤖 **想了解 AI Agent 能做什么？** 查看 [AI Agent 能力说明](AGENT_CAPABILITIES.md)  
+> 🤖 **Want to know what AI Agents can do?** Check out [AI Agent Capabilities](AGENT_CAPABILITIES.md)
+
 ## 🎨 Design Philosophy
 
 - **Material Design 3** inspired interface
@@ -298,6 +301,10 @@ This project is open source and available under the [MIT License](LICENSE).
 - Icons by [Phosphor Icons](https://phosphoricons.com/)
 - Fonts by [Google Fonts](https://fonts.google.com/)
 - Built with [Jekyll](https://jekyllrb.com/)
+
+## 🤖 AI Agent Development
+
+This project is developed with the assistance of AI agents. Learn more about what AI agents can do and how they differ from traditional development in the [AI Agent Capabilities Guide](AGENT_CAPABILITIES.md).
 
 ## 🔄 Recent Updates
 
