@@ -5,6 +5,14 @@ h1, h2, h3 { color: #1d1d1f; font-weight: 600; letter-spacing: -0.015em; }
 h2 { margin-top: 2em; margin-bottom: 0.8em; font-size: 1.8rem; }
 h3 { margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.4rem; }
 
+/* 针对右侧内容区的所有段落 */
+.content-area p {
+    font-size: 1.05rem; /* 让正文字体比基础字体略大 */
+    line-height: 1.9;
+    color: #333;
+    margin-bottom: 1.5em;
+}
+
 /* 引用与图片 */
 blockquote { border-left: 4px solid var(--apple-blue); padding-left: 16px; color: var(--text-gray); margin: 20px 0; font-style: italic; }
 img { border-radius: 12px; max-width: 100%; height: auto; }
