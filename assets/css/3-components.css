@@ -1,0 +1,28 @@
+/* assets/css/3-components.css */
+
+/* 文章标题与排版 */
+h1, h2, h3 { color: #1d1d1f; font-weight: 600; letter-spacing: -0.015em; }
+h2 { margin-top: 2em; margin-bottom: 0.8em; font-size: 1.8rem; }
+h3 { margin-top: 1.5em; margin-bottom: 0.5em; font-size: 1.4rem; }
+
+/* 引用与图片 */
+blockquote { border-left: 4px solid var(--apple-blue); padding-left: 16px; color: var(--text-gray); margin: 20px 0; font-style: italic; }
+img { border-radius: 12px; max-width: 100%; height: auto; }
+
+/* --- 首页欢迎语 (Hero) --- */
+.hero-section { margin-bottom: 60px; padding-bottom: 30px; border-bottom: 1px solid #eaeaea; }
+.hero-title { font-size: 2.2rem; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
+.hero-desc { font-size: 1.1rem; color: #86868b; }
+
+/* --- 文章列表卡片 --- */
+.post-item { margin-bottom: 50px; }
+.post-title-link { display: block; font-size: 1.6rem; font-weight: 600; color: #1d1d1f; text-decoration: none; line-height: 1.3; margin-bottom: 8px; }
+.post-title-link:hover { color: #0071e3; text-decoration: none; }
+.post-meta { font-size: 0.85rem; color: #86868b; margin-bottom: 12px; font-family: "SF Mono", monospace; }
+.post-excerpt { font-size: 1.05rem; line-height: 1.7; color: #424245; margin-bottom: 15px; }
+.read-more { font-size: 0.9rem; font-weight: 600; color: #0071e3; text-decoration: none; }
+
+/* --- 代码块 (Code Blocks) --- */
+pre { background-color: #f6f8fa; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 20px 0; border: 1px solid #e1e4e8; line-height: 1.5; }
+p code, li code { background-color: rgba(27, 31, 35, 0.05); padding: 0.2em 0.4em; border-radius: 4px; font-family: monospace; font-size: 0.85em; color: #d63384; }
+pre code { background-color: transparent; padding: 0; color: #24292e; font-size: 0.9em; font-family: monospace; display: block; }
