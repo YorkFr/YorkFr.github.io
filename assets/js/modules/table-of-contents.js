@@ -68,6 +68,10 @@ export function initTableOfContents() {
         // Smooth scroll to heading
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            // Immediately mark this link active to avoid wrong item staying highlighted
+            tocList.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
             if (scrollContainer) {
                 const top = heading.offsetTop;
                 scrollContainer.scrollTo({ top, behavior: 'smooth' });
