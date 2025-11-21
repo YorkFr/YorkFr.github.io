@@ -60,20 +60,27 @@ export function initFocusMode() {
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
             const target = scrollContainer || window;
-            target.scrollTo({ top: 0, behavior: 'smooth' });
+            if (scrollContainer) {
+                scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         });
 
         // Show/hide based on scroll position
         const watchScroll = () => {
-            const position = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+            const position = scrollContainer ? scrollContainer.scrollTop : (window.pageYOffset || document.documentElement.scrollTop);
             if (position > 300 && body.classList.contains('focus-mode')) {
                 scrollTopBtn.style.opacity = '1';
+                scrollTopBtn.style.pointerEvents = 'auto';
             } else {
                 scrollTopBtn.style.opacity = '0.5';
+                scrollTopBtn.style.pointerEvents = 'none';
             }
         };
 
-        (scrollContainer || window).addEventListener('scroll', watchScroll);
+        const scrollTarget = scrollContainer || window;
+        scrollTarget.addEventListener('scroll', watchScroll, { passive: true });
     }
 
     // Reader panel toggle

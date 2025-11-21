@@ -3,14 +3,15 @@
 export function initSearch() {
     let searchData = [];
     let selectedIndex = -1;
+    let isLoading = true;
 
     // Create overlay and palette
     const overlay = document.createElement('div');
     overlay.className = 'cmd-overlay';
     overlay.innerHTML = `
-        <div class="cmd-palette">
-            <input type="text" class="cmd-input" placeholder="Search posts..." autocomplete="off">
-            <div class="cmd-results"></div>
+        <div class="cmd-palette" role="dialog" aria-label="Search posts">
+            <input type="text" class="cmd-input" placeholder="Search posts..." autocomplete="off" aria-label="Search input">
+            <div class="cmd-results" role="listbox" aria-label="Search results"></div>
         </div>
     `;
     document.body.appendChild(overlay);
@@ -20,19 +21,34 @@ export function initSearch() {
 
     // Load search data
     fetch('/search-data.json')
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => {
             searchData = data;
+            isLoading = false;
         })
-        .catch(err => console.error('Failed to load search data:', err));
+        .catch(err => {
+            console.error('Failed to load search data:', err);
+            isLoading = false;
+            results.innerHTML = '<div class="cmd-empty">Search unavailable</div>';
+        });
 
     // Open palette
     const openSearch = () => {
+        if (isLoading) {
+            results.innerHTML = '<div class="cmd-empty">Loading...</div>';
+        }
         overlay.classList.add('active');
         input.value = '';
         input.focus();
         selectedIndex = -1;
-        renderResults([]);
+        if (!isLoading) {
+            renderResults([]);
+        }
     };
 
     // Close palette
@@ -60,9 +76,12 @@ export function initSearch() {
         }
 
         results.innerHTML = items.map((item, index) => `
-            <div class="cmd-result-item ${index === selectedIndex ? 'selected' : ''}" data-index="${index}">
-                <div class="cmd-result-title">${item.title}</div>
-                <div class="cmd-result-meta">${item.date} | ${item.categories.join(', ')}</div>
+            <div class="cmd-result-item ${index === selectedIndex ? 'selected' : ''}" 
+                 data-index="${index}" 
+                 role="option" 
+                 aria-selected="${index === selectedIndex}">
+                <div class="cmd-result-title">${escapeHtml(item.title)}</div>
+                <div class="cmd-result-meta">${escapeHtml(item.date)} | ${item.categories.map(escapeHtml).join(', ')}</div>
             </div>
         `).join('');
 
@@ -73,6 +92,13 @@ export function initSearch() {
                 window.location.href = items[index].url;
             });
         });
+    };
+
+    // Helper function to escape HTML
+    const escapeHtml = (text) => {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     };
 
     // Event listeners

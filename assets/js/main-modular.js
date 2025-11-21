@@ -8,6 +8,10 @@ import { initCodeCopy } from './modules/code-copy.js';
 import { initSearch } from './modules/search.js';
 import { initCategoryFilter } from './modules/category-filter.js';
 import { initFocusMode } from './modules/focus-mode.js';
+import { initReadingProgress } from './modules/reading-progress.js';
+import { initTableOfContents } from './modules/table-of-contents.js';
+import { initShare } from './modules/share.js';
+import { initKeyboardHelp } from './modules/keyboard-help.js';
 
 // Initialize all modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearch();
     initCategoryFilter();
     initFocusMode();
+    initReadingProgress();
+    initTableOfContents();
+    initShare();
+    initKeyboardHelp();
 });
 
 // Optional: Native Full Screen Helper
