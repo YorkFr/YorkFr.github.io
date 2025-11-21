@@ -5,39 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     
-    <link rel="stylesheet" href="{{ site.github.url | append: '/assets/css/style.css' }}">
-    
+    <style>
+        /* 全局重置 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f8; /* 浅灰背景，保护眼睛 */
+            color: #333;
+            line-height: 1.7; /* 增加行高，阅读更舒服 */
+            padding: 20px;
+        }
+
+        /* 链接样式 */
+        a { color: #0366d6; text-decoration: none; transition: 0.2s; }
+        a:hover { color: #0056b3; text-decoration: underline; }
+
+        /* 主容器：核心布局 */
+        .container {
+            max-width: 800px; /* 限制宽度，阅读体验最佳 */
+            margin: 0 auto;   /* 自动居中 */
+            background-color: #fff; /* 白色卡片背景 */
+            padding: 40px 50px;
+            border-radius: 8px; /* 圆角 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 轻微阴影，增加立体感 */
+        }
+
+        /* 头部 Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaecef;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        header h1 a { color: #24292e; text-decoration: none; }
+
+        header p { color: #666; font-size: 1.1em; }
+
+        /* 导航栏 */
+        nav { margin-top: 20px; }
+        nav a {
+            margin: 0 10px;
+            font-weight: 600;
+            color: #586069;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        nav a:hover { color: #0366d6; text-decoration: none; }
+
+        /* 核心内容区 Main */
+        main img {
+            max-width: 100%; /* 防止大图片撑破页面 */
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        main h1, main h2, main h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: #24292e; }
+        main p { margin-bottom: 1.2em; }
+        main ul, main ol { margin-bottom: 1.2em; padding-left: 1.5em; }
+        main blockquote {
+            border-left: 4px solid #dfe2e5;
+            color: #6a737d;
+            padding-left: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* 底部 Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecef;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 600px) {
+            .container { padding: 20px 20px; }
+            header h1 { font-size: 1.8em; }
+        }
+    </style>
 </head>
 <body>
 
-    <header style="background-color: #f0f0f0; padding: 20px;">
-        <h1><a href="/" style="text-decoration: none; color: #333;">{{ site.title }}</a></h1>
-        <p>{{ site.description }}</p>
-        
-        <nav style="margin-top: 15px;">
-            <a href="/" style="margin-right: 15px;">主页</a> 
-            <a href="/archive" style="margin-right: 15px;">所有文章</a> 
-            <a href="/about" style="margin-right: 15px;">关于我</a>
-        </nav>
-        <hr style="border: 0; border-top: 1px solid #ccc; margin-top: 15px;">
-    </header>
+    <div class="container">
+        <header>
+            <h1><a href="/">{{ site.title }}</a></h1>
+            <p>{{ site.description }}</p>
+            <nav>
+                <a href="/">首页</a>
+                <a href="/archive">文章归档</a>
+                <a href="/about">关于我</a>
+            </nav>
+        </header>
 
-    <main style="
-        padding: 40px; 
-        max-width: 960px; 
-        margin: 40px auto; 
-        background-color: white; 
-        border: 1px solid #ddd; 
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    ">
-        {{ content }} 
-    </main>
+        <main>
+            {{ content }}
+        </main>
 
-    <footer style="margin-top: 50px; padding: 20px; text-align: center; border-top: 1px solid #ccc;">
-        <p>&copy; {{ site.time | date: "%Y" }} {{ site.author | default: site.title }}</p>
-        <p>由 GitHub Pages 强力驱动</p>
-    </footer>
+        <footer>
+            <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }} | Powered by GitHub Pages</p>
+        </footer>
+    </div>
 
 </body>
 </html>
