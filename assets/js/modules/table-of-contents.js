@@ -13,6 +13,12 @@ export function initTableOfContents() {
     const postContent = document.querySelector('.post-content-clean');
     if (!postContent) return;
 
+    // Detect scroll container (main-stream) or fall back to window
+    const maybeScrollContainer = document.querySelector('.main-stream');
+    const scrollContainer = (maybeScrollContainer && maybeScrollContainer.scrollHeight > maybeScrollContainer.clientHeight)
+        ? maybeScrollContainer
+        : null;
+
     // Find all headings (h2, h3)
     const headings = postContent.querySelectorAll('h2, h3');
     
@@ -62,7 +68,12 @@ export function initTableOfContents() {
         // Smooth scroll to heading
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (scrollContainer) {
+                const top = heading.offsetTop;
+                scrollContainer.scrollTo({ top, behavior: 'smooth' });
+            } else {
+                heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
             
             // Update URL without triggering scroll
             history.pushState(null, '', `#${heading.id}`);
@@ -98,7 +109,8 @@ export function initTableOfContents() {
     // Highlight current section on scroll
     const observerOptions = {
         rootMargin: TOC_CONFIG.OBSERVER_ROOT_MARGIN,
-        threshold: TOC_CONFIG.OBSERVER_THRESHOLD
+        threshold: TOC_CONFIG.OBSERVER_THRESHOLD,
+        root: scrollContainer || null
     };
 
     const observer = new IntersectionObserver((entries) => {

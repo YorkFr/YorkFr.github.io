@@ -403,7 +403,7 @@
 
 /* Hide TOC in focus mode */
 .focus-mode .table-of-contents {
-    display: none;
+    display: block;
 }
 
 /* Share Container */
@@ -486,7 +486,7 @@
     border-color: #34A853;
 }
 
-/* Hide share in focus mode */
+/* Show share even in focus mode */
 .focus-mode .share-container {
-    display: none;
+    display: block;
 }
