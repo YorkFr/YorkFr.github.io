@@ -12,6 +12,7 @@
     text-decoration: none;
     background: none;
     -webkit-text-fill-color: white;
+    transition: none;
 }
 
 .gemini-welcome-card .card-excerpt {
@@ -28,6 +29,8 @@
 .gemini-welcome-card a:focus {
     color: white;
     text-decoration: none;
+    background: none;
+    -webkit-text-fill-color: white;
 }
 
 .gemini-welcome-card:hover,
@@ -37,4 +40,12 @@
     color: white;
     background: none;
     -webkit-text-fill-color: white;
+    text-decoration: none;
+}
+
+.gemini-welcome-card .card-title:hover {
+    color: white !important;
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    text-decoration: none !important;
 }
